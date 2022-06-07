@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const user = require('../models/user');
 
 exports.auth = (req, res, next) => {
     try{
@@ -14,5 +15,19 @@ exports.auth = (req, res, next) => {
         console.log(err)
         res.status(401).send('Token Invalid!')
     }
+}
 
+exports.authAdmin = async (req, res, next) => {
+    try{
+        const {username} = req.user
+        const adminUser = await user.findOne({username}).exec()
+        if (adminUser.role !== 'admin'){
+            res.status(403).send(err,'Access denied')
+        } else {
+            next()
+        }
+    }catch(err){
+        console.log(err)
+        res.status(401).send('Access denied')
+    }
 }

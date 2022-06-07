@@ -11,7 +11,7 @@ const {findAllUser,
 } = require('../controllers/auth')
 
 // middleware
-const {auth} = require('../middleware/auth')
+const {auth, authAdmin} = require('../middleware/auth')
 
 //@Endpoint http://localhost:3001/api/auth
 //@method GET
@@ -33,7 +33,10 @@ router.post('/login', login)
 //@Access Private
 router.post('/current-user', auth, currentUser)
 
-
+//@Endpoint http://localhost:3001/api/current-admin
+//@method POST
+//@Access Private
+router.post('/current-admin', auth, authAdmin, currentUser)
 
 //@Endpoint http://localhost:3001/api/1
 //@method GET

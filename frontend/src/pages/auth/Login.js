@@ -47,7 +47,7 @@ export default function Login() {
         localStorage.setItem('token', res.data.token)
         roleBaseRedirect(res.data.payload.user.role)
           }).catch(err => {
-            console.log(err.response.data)
+            console.log(err.response)
             alert(err.response.data)
           });
       }

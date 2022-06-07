@@ -1,17 +1,20 @@
-import React, {useState, useEffect} from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, {useState, useEffect} from 'react';
+import { Routes, Route } from 'react-router-dom';
 // Page
 import Register from "./pages/auth/Register";
-import Login from "./pages/auth/Login"
-import Home from './pages/home'
+import Login from "./pages/auth/Login";
+import Home from './pages/home';
 import HomeAdmin from './pages/admin/HomeAdmin';
 import HomeUser from './pages/user/HomeUser';
 // Layout
 import Header from './components/layout/Header';
 // functions
-import {currentUser} from './functions/auth'
+import {currentUser} from './functions/auth';
 // redux
-import {useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux';
+// Routes
+import UserRoute from './routes/UserRoute';
+import AdminRoute from './routes/AdminRoute';
 
 function App() {
   const dispatch =  useDispatch()
@@ -36,8 +39,19 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path='/user/index' element={<HomeUser />} />
-        <Route path='/admin/index' element={<HomeAdmin />} />
+      <Route
+          path="/user/index"
+          element={
+            <UserRoute>
+              <HomeUser />
+            </UserRoute>
+          }
+        />
+        <Route path='/admin/index' element={
+          <AdminRoute>
+            <HomeAdmin />
+          </AdminRoute>
+        } />
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/' element={<Home />} />
