@@ -19,6 +19,7 @@ exports.register = async(req, res, next) => {
         if(user){
             return res.status(400).send('User Already exists')
         }
+        // gen salt
         const salt = await bcrypt.genSalt(10)
         user = new User({
             username,

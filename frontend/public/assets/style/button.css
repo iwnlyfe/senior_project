@@ -1,0 +1,7 @@
+body{
+    flex-direction: column;
+    justify-content: center;
+}
+h1{
+    color: white
+}

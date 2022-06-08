@@ -26,7 +26,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 require('dotenv').config();
-// const { readdirSync } = require('fs')
+const { readdirSync } = require('fs')
 // const mongoConnect = require('./util/database').mongoConnect
 const connectDB = require('./util/db')
 
@@ -40,11 +40,12 @@ app.use(bodyParser.json({limit: '20mb'})) // application/json
 app.use(cors()) 
 
 // Route with ReadDIR
-// readdirSync('./routes').map((read) => app.use('/api', require('./routes/' +read)))
+readdirSync('./routes').map((read) => app.use('/api', require('./routes/' +read),
+))
 
 // Route
-const api = require('./routes/api')
-app.use('/api', api)
+// const api = require('./routes/api')
+// app.use('/api', api)
 
 // ConnectDB
 connectDB()
