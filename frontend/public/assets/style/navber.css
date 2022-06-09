@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sideber{
+    position: fixed;
+    width: auto;
+    height: 100%;
+    background: #fff;
+    padding: 30px 0;
+}
+
+/* .wrapper .sideber h2{
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+} */
+
+.wrapper .sideber ul li{
+    padding: 15px;
+    border-bottom: 1px solid rgba(rgb(255, 255, 255), green, blue, alpha);
+    border-top: 1px solid rgba(rgb(255, 7, 7), green, blue, alpha);
+}

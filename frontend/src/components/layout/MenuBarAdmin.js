@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default function MenuBarAdmin() {
   return (
-      <nav>
+      <nav className='wrapper'>
+        <div className='wrapper sideber'>
           <ul className='nav flex-column'>
               <li className='nav-item'>
                 <Link to='/admin/index'>แดชบอร์ด</Link>
@@ -14,6 +15,7 @@ export default function MenuBarAdmin() {
               </li>
                
           </ul>
+        </div>
       </nav>
   )
 }
