@@ -144,7 +144,7 @@ export default function ManagaAdmin() {
                         icon: 'error',
                         title: 'Oops...',
                         text: err.response.data,
-                        footer: '<a href="">Why do I have this issue?</a>'
+                        // footer: '<a href="">Why do I have this issue?</a>'
                       })
                     console.log(err.response)
                 })
