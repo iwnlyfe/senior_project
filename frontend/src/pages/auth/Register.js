@@ -28,7 +28,6 @@ export default function Register() {
           res.data,
           'success'
         )
-<<<<<<< HEAD
         console.log(res.data)
         // alert(res.data)
       }).catch(err => {
@@ -36,14 +35,6 @@ export default function Register() {
         err.response.data,
         'error')
         console.log(err.response.data)
-=======
-      }).catch(err => {
-        Swal.fire('แจ้งเตือน',
-          err.response.data,
-          'error'
-        )
-        // console.log(err.response.data)
->>>>>>> Loginice
         // alert(err.response.data)
       })
     }
