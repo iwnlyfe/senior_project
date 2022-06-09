@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import MenuBarAdmin from '../../components/layout/MenuBarAdmin'
 import { useSelector } from 'react-redux';
 import moment from 'moment/min/moment-with-locales';
+import Swal from 'sweetalert2'
 // functions
 import { listUser, 
     changeStatus, 
@@ -16,6 +17,7 @@ export default function ManagaAdmin() {
     const {user} = useSelector((state) => ({...state}))
     const [data, setData] = useState([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const Swal = require('sweetalert2')
     const [value, setValue] = useState({
         id: '',
         password: '',
@@ -105,17 +107,50 @@ export default function ManagaAdmin() {
         })
     }
 
+    // const handleDelete = (_id) => {
+    //     if (window.confirm('Are You Sure Delete!!')){
+    //         // console.log(_id)
+    //         deleteUser(user.token, _id)
+    //         .then(res => {
+    //             console.log(res.data)
+    //             loadData(user.token)
+    //         }).catch(err => {
+    //             console.log(err.response)
+    //         })
+    //     }
+    // }
+
     const handleDelete = (_id) => {
-        if (window.confirm('Are You Sure Delete!!')){
-            // console.log(_id)
-            deleteUser(user.token, _id)
-            .then(res => {
-                console.log(res.data)
-                loadData(user.token)
-            }).catch(err => {
-                console.log(err.response)
-            })
-        }
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                deleteUser(user.token, _id)
+                .then(res => {
+                    Swal.fire(
+                        'Deleted!',
+                        'Account has been deleted.',
+                        'success'
+                    )
+                    loadData(user.token)
+                }).catch(err => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: err.response.data,
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                      })
+                    console.log(err.response)
+                })
+              
+            }
+          })
     }
 
   return (
