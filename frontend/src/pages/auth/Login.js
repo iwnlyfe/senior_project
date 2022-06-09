@@ -52,6 +52,7 @@ export default function Login() {
           });
       }
 
+<<<<<<< HEAD
   return (
     // <div className='page'>
     //   <h1 className=''>Login Page</h1>
@@ -61,6 +62,30 @@ export default function Login() {
     //     <label>Password</label>
     //     <input type='password' name='password' onChange={handleChange} className=""/>
 
+=======
+  // return (
+  //   <div>
+  //     <h1>Login Page</h1>
+  //     <form onSubmit={handleSubmit}>
+  //       <label>Username</label>
+  //       <input type="text" name="username" onChange={handleChange} />
+  //       <label>Password</label>
+  //       <input type='password' name='password' onChange={handleChange}/>
+
+  //       <button>Submit</button>
+  //     </form>
+  //   </div>
+  // )
+  return (
+    // <div className='page'>
+    //   <h1 className=''>Login Page</h1>
+    //   <form onSubmit={handleSubmit}>
+    //     <label>Username</label>
+    //     <input type="text" name="username" onChange={handleChange} className=""/>
+    //     <label>Password</label>
+    //     <input type='password' name='password' onChange={handleChange} className=""/>
+
+>>>>>>> Loginice
     //     <button>Submit</button>
     //   </form>
     // </div>
