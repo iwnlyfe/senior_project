@@ -21,11 +21,16 @@ export default function Register() {
     e.preventDefault()
     // console.log(value)
     if (value.password !== value.confirmPassword){
-      alert('Password not match')
+      Swal.fire({
+        icon: 'error',
+        title: 'Password not match!!',
+        text: 'Try again.'
+      })
+      // alert('Password not match')
     } else {
       register(value).then(res => {
         Swal.fire(
-          value.username,
+          'username: '+ value.username,
           res.data,
           'success'
         )
@@ -62,26 +67,26 @@ export default function Register() {
               <div class="login-box bg-white pl-0">
                   <div class="row no-gutters align-items-center">
                       <div class="col-md-6">
-                          <div class="form-wrap bg-white">
+                          <div class="form-wrap bg-white" >
                               <h4 class="btm-sep pb-3 mb-5">Register Page</h4>
                               <form class="form" onSubmit={handleSubmit}>
-                                  <div class="row">
+                                  <div class="row" style={{marginBottom: '-15px'}}>
                                       <div class="col-12">
                                           <div class="form-group position-relative">
                                               <span class="zmdi zmdi-account"></span>
-                                              <input type="text" class="form-control" name='username' placeholder="username" onChange={handleChange}/>
+                                              <input type="text" class="form-control" name='username' placeholder="username" onChange={handleChange} required/>
                                           </div>
                                       </div>
                                       <div class="col-12">
                                           <div class="form-group position-relative">
                                               <span class="zmdi zmdi-email"></span>
-                                              <input type="password" name='password' class="form-control" placeholder="Password" onChange={handleChange}/>
+                                              <input type="password" name='password' class="form-control" placeholder="Password" onChange={handleChange} required/>
                                           </div>
                                       </div>
                                       <div class="col-12">
                                           <div class="form-group position-relative">
                                               <span class="zmdi zmdi-email"></span>
-                                              <input type="password" name='confirmPassword' class="form-control" placeholder="confirm Password" onChange={handleChange}/>
+                                              <input type="password" name='confirmPassword' class="form-control" placeholder="confirm Password" onChange={handleChange} required/>
                                           </div>
                                       </div>
                                       <div class="col-12 mt-30 ">
