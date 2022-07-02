@@ -39,8 +39,10 @@ exports.register = async(req, res, next) => {
 exports.login = async (req, res, next) => {
     try {
         const { username, password } = req.body;
+        console.log(username, password)
         var user = await User.findOneAndUpdate({username}, {new: true });
-        if(user && user.enabled){
+        // if(user && user.enabled){
+        if(user){
             // Check Password
             const isMatch = await bcrypt.compare(password, user.password);
             if(!isMatch){

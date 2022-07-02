@@ -4,7 +4,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import MenuBarAdmin from '../../components/layout/MenuBarAdmin'
 import { useSelector } from 'react-redux';
 import moment from 'moment/min/moment-with-locales';
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 // functions
 import { listUser, 
     changeStatus, 
@@ -167,7 +167,7 @@ export default function ManagaAdmin() {
                             <th scope="col">#</th>
                             <th scope="col">username</th>
                             <th scope="col">role</th>
-                            <th scope="col">status</th>
+                            {/* <th scope="col">status</th> */}
                             <th scope="col">created</th>
                             <th scope="col">updated</th>
                             <th scope="col">actions</th>
@@ -195,11 +195,11 @@ export default function ManagaAdmin() {
                                     
                                 </Select>
                             </td>
-                            <td>
+                            {/* <td>
                                 <Switch 
                                 checked={item.enabled} 
                                 onChange={(e)=>handleChangeStatus(e, item._id)}/>
-                            </td>
+                            </td> */}
                             <td>
                                 {moment(item.createdAt).locale('th').format('ll')}
                             </td>
