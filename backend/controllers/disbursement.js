@@ -1,9 +1,8 @@
-const disbursement = require('../models/disbursement')
 const Disbursement = require('../models/disbursement')
 
 exports.findAllDisbursement = async(req, res) => {
     try{
-        const disbursement = await Disbursement.findAll({})
+        const disbursement = await Disbursement.find({})
         res.send(disbursement)
     }catch(err){
         console.log(err)
@@ -14,7 +13,7 @@ exports.findAllDisbursement = async(req, res) => {
 exports.addDisbursement = async(req, res) => {
     try{
         const {user_id, product_id, quantity, date, state} = req.body
-        disbursement = new Disbursement({
+        var disbursement = new Disbursement({
             user_id, 
             product_id, 
             quantity, 

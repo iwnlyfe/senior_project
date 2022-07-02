@@ -2,7 +2,7 @@ const Shelf = require('../models/shelf')
 
 exports.findAllShelf = async(req, res) => {
     try{
-        const shelf = Shelf.findAll({})
+        const shelf = await Shelf.find({})
         res.send(shelf)
     }catch(err){
         console.log(err)
@@ -13,7 +13,7 @@ exports.findAllShelf = async(req, res) => {
 exports.addShelf = async(req, res) => {
     try{
         const {floorNumber, lockNumber, shelfStatus, zone_id} = req.body;
-        const shelf = await Shelf.findOne({floorNumber: floorNumber, lockNumber: lockNumber})
+        var shelf = await Shelf.findOne({floorNumber: floorNumber, lockNumber: lockNumber})
         if(shelf){
             return res.status(400).send('floor and lock already exist!')
         }
@@ -23,7 +23,7 @@ exports.addShelf = async(req, res) => {
             shelfStatus,
             zone_id
         })
-        await Shelf.save();
+        await shelf.save();
         res.send('Add Shelf Success!')
     }catch(err){
         console.log(err)

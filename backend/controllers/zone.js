@@ -2,7 +2,7 @@ const Zone = require('../models/zone')
 
 exports.findAllZone = async(req, res) => {
     try{
-        const zone = await Zone.findAll({})
+        const zone = await Zone.find({})
         res.send(zone)
     }catch(err){
         console.log(err)
@@ -33,7 +33,7 @@ exports.updateZone = async(req, res) => {
         const {id, zonetype} = req.body
         await Zone.updateOne(
             {_id: id},
-            {$set: zonetype}
+            {zonetype: zonetype}
         )
         res.send('Update Zone Success!')
     }catch(err){
