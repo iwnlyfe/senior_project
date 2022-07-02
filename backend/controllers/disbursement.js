@@ -58,7 +58,7 @@ exports.updateDisbursement = async(req, res) => {
 
 exports.deleteDisbursement = async(req, res) => {
     try{
-        const {id} = req.body;
+        const {id} = req.params;
         await Disbursement.deleteOne(
             {_id: id}
         ).exec()
