@@ -5,6 +5,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from './pages/home';
 import HomeAdmin from './pages/admin/HomeAdmin';
+import ProductView from "./pages/product/ProductView";
 import HomeUser from './pages/user/HomeUser';
 import ManagaAdmin from './pages/admin/ManageAdmin';
 // Layout
@@ -58,6 +59,7 @@ function App() {
             <ManagaAdmin />
           </AdminRoute>
         } />
+        <Route path='user/productview' element={<ProductView />}/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/' element={<Home />} />
