@@ -29,7 +29,7 @@ router.get('/deleteProduct/:id', deleteProduct)
 //@Access Publish
 router.post('/disbursement', disbursement)
 
-//@Endpoint http://localhost:3001/api/withdraw
+//@Endpoint http://localhost:3001/api/withdraw -> return
 //@method POST
 //@Access Publish
 router.post('/withdraw', withdraw)

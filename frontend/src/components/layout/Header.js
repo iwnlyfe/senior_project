@@ -35,6 +35,8 @@ export default function Header() {
         navigate('/')
     }
     return (
+        <div class='container-fluid'>
+            {/* <div class='fixed-top'> */}
         <Menu mode="horizontal" >
             <Menu.Item key="mail" icon={<HomeOutlined />}>
                 <Link to="/">Home</Link>
@@ -77,5 +79,7 @@ export default function Header() {
                 </a>
             </Menu.Item> */}
         </Menu>
+        {/* </div> */}
+        </div>
     )
 }

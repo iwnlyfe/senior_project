@@ -5,7 +5,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from './pages/home';
 import HomeAdmin from './pages/admin/HomeAdmin';
-import ProductView from "./pages/product/ProductView";
+import ProductView from "./pages/mainehome/product/ProductView";
 import HomeUser from './pages/user/HomeUser';
 import ManagaAdmin from './pages/admin/ManageAdmin';
 // Layout
@@ -17,6 +17,8 @@ import { useDispatch } from 'react-redux';
 // Routes
 import UserRoute from './routes/UserRoute';
 import AdminRoute from './routes/AdminRoute';
+import ProductCreate from './pages/mainehome/product/ProductCreate';
+import ProductUpdate from './pages/mainehome/product/ProductUpdate';
 
 function App() {
   const dispatch =  useDispatch()
@@ -59,10 +61,24 @@ function App() {
             <ManagaAdmin />
           </AdminRoute>
         } />
-        <Route path='user/productview' element={<ProductView />}/>
+        <Route path='user/productview' element={
+        <UserRoute>
+          <ProductView />
+        </UserRoute>
+      }/>
+      <Route path='user/productcreate' element={
+        <UserRoute>
+          <ProductCreate />
+          </UserRoute>
+      }/>
+      <Route path='user/productupdate' element={
+        <UserRoute>
+          <ProductUpdate />
+        </UserRoute>
+      }/>
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Login />} />
       </Routes>
     </div>
   );

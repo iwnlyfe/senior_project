@@ -87,7 +87,7 @@ export default function Login() {
     //     <button>Submit</button>
     //   </form>
     // </div>
-    <div class="align body">
+    <div class="align col-12">
         <div class="row">
             <div class="col-md-11 mt-60 mx-md-auto">
                 <div class="login-box bg-white pl-0">
