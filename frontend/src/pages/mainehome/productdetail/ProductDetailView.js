@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import {findAllProduct} from '../../../functions/product'
+import {findAllProductDetail} from '../../../functions/productdetail'
 import Menu from '../../../components/layout/Menu'
-import { deleteProduct } from '../../../functions/product'
+import { deleteProductDetail } from '../../../functions/productdetail'
 
-export default function ProductView() {
+export default function ProductDetailView() {
   const [products,setProduct] = useState([])
   const Swal = require('sweetalert2')
 
@@ -19,7 +19,7 @@ export default function ProductView() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProduct(id)
+        deleteProductDetail(id)
           .then(res => {
               Swal.fire(
                   'Deleted!',
@@ -41,7 +41,7 @@ export default function ProductView() {
     })
   }
   const loadData = () =>{
-    findAllProduct()
+    findAllProductDetail()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -52,7 +52,7 @@ export default function ProductView() {
   }
 
   useEffect(()=>{
-    findAllProduct()
+    findAllProductDetail()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -67,7 +67,7 @@ export default function ProductView() {
       <Menu />
       <div  class='col-9 mx-2'>
         <div class='row'>
-          <h1 class='col-10'>Product View</h1>
+          <h1 class='col-10'>ProductDetail View</h1>
           <a href='productcreate' class='btn btn-outline-secondary py-0 my-3 btn-lg'>Create</a>
         </div>
           
@@ -75,10 +75,10 @@ export default function ProductView() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>ProductName</th>
-                <th scope='col'>Quantity</th>
-                <th scope='col'>Price</th>
-                <th scope='col'>Group</th>
+                <th scope='col'>productStatus</th>
+                <th scope='col'>receiveDate</th>
+                <th scope='col'>expireDate</th>
+                <th scope='col'>receiveQuantity</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -86,10 +86,10 @@ export default function ProductView() {
             <tbody key={index}>
               <tr>
                 <th scope="row">1</th>
-                <th >{product.productName}</th>
-                <th >{product.quantity}</th>
-                <th >{product.price}</th>
-                <th >{product.group}</th>
+                <th >{product.productStatus}</th>
+                <th >{product.receiveDate}</th>
+                <th >{product.expireDate}</th>
+                <th >{product.receiveQuantity}</th>
                 <th>
                   <a href='productupdate' className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

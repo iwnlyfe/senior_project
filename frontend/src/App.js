@@ -19,6 +19,10 @@ import UserRoute from './routes/UserRoute';
 import AdminRoute from './routes/AdminRoute';
 import ProductCreate from './pages/mainehome/product/ProductCreate';
 import ProductUpdate from './pages/mainehome/product/ProductUpdate';
+import ZoneView from './pages/mainehome/zone/ZoneView';
+import ProductDetailView from './pages/mainehome/productdetail/ProductDetailView';
+import ShelfView from './pages/mainehome/shelf/ShelfView';
+import DisbursementView from './pages/mainehome/disbursement/DisbursementView';
 
 function App() {
   const dispatch =  useDispatch()
@@ -61,19 +65,39 @@ function App() {
             <ManagaAdmin />
           </AdminRoute>
         } />
-        <Route path='user/productview' element={
+        <Route path='/productview' element={
         <UserRoute>
           <ProductView />
         </UserRoute>
       }/>
-      <Route path='user/productcreate' element={
+      <Route path='/productcreate' element={
         <UserRoute>
           <ProductCreate />
           </UserRoute>
       }/>
-      <Route path='user/productupdate' element={
+      <Route path='/productupdate' element={
         <UserRoute>
           <ProductUpdate />
+        </UserRoute>
+      }/>
+      <Route path='/zoneview' element={
+        <UserRoute>
+          <ZoneView />
+        </UserRoute>
+      }/>
+      <Route path='/productdetailview' element={
+        <UserRoute>
+          <ProductDetailView />
+        </UserRoute>
+      }/>
+      <Route path='/shelfview' element={
+        <UserRoute>
+          <ShelfView />
+        </UserRoute>
+      }/>
+      <Route path='/disbursementview' element={
+        <UserRoute>
+          <DisbursementView />
         </UserRoute>
       }/>
         <Route path='/register' element={<Register />}/>

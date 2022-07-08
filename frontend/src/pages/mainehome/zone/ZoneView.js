@@ -1,10 +1,10 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import {findAllProduct} from '../../../functions/product'
+import {findAllZone} from '../../../functions/zone'
 import Menu from '../../../components/layout/Menu'
-import { deleteProduct } from '../../../functions/product'
+import { deleteZone } from '../../../functions/zone'
 
-export default function ProductView() {
+export default function ZoneView() {
   const [products,setProduct] = useState([])
   const Swal = require('sweetalert2')
 
@@ -19,7 +19,7 @@ export default function ProductView() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProduct(id)
+        deleteZone(id)
           .then(res => {
               Swal.fire(
                   'Deleted!',
@@ -41,7 +41,7 @@ export default function ProductView() {
     })
   }
   const loadData = () =>{
-    findAllProduct()
+    findAllZone()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -52,7 +52,7 @@ export default function ProductView() {
   }
 
   useEffect(()=>{
-    findAllProduct()
+    findAllZone()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -75,10 +75,7 @@ export default function ProductView() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>ProductName</th>
-                <th scope='col'>Quantity</th>
-                <th scope='col'>Price</th>
-                <th scope='col'>Group</th>
+                <th scope='col'>zonetype</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -86,10 +83,7 @@ export default function ProductView() {
             <tbody key={index}>
               <tr>
                 <th scope="row">1</th>
-                <th >{product.productName}</th>
-                <th >{product.quantity}</th>
-                <th >{product.price}</th>
-                <th >{product.group}</th>
+                <th >{product.zonetype}</th>
                 <th>
                   <a href='productupdate' className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
