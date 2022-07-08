@@ -23,6 +23,7 @@ import ZoneView from './pages/mainehome/zone/ZoneView';
 import ProductDetailView from './pages/mainehome/productdetail/ProductDetailView';
 import ShelfView from './pages/mainehome/shelf/ShelfView';
 import DisbursementView from './pages/mainehome/disbursement/DisbursementView';
+import ZoneCreate from './pages/mainehome/zone/ZoneCreate';
 
 function App() {
   const dispatch =  useDispatch()
@@ -83,6 +84,11 @@ function App() {
       <Route path='/zoneview' element={
         <UserRoute>
           <ZoneView />
+        </UserRoute>
+      }/>
+      <Route path='/zonecreate' element={
+        <UserRoute>
+          <ZoneCreate />
         </UserRoute>
       }/>
       <Route path='/productdetailview' element={

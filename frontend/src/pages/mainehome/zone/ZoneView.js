@@ -68,7 +68,7 @@ export default function ZoneView() {
       <div  class='col-9 mx-2'>
         <div class='row'>
           <h1 class='col-10'>Product View</h1>
-          <a href='productcreate' class='btn btn-outline-secondary py-0 my-3 btn-lg'>Create</a>
+          <a href='zonecreate' class='btn btn-outline-secondary py-0 my-3 btn-lg'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
