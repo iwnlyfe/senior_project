@@ -41,6 +41,7 @@ exports.addProductDetail = async(req, res) => {
 
 exports.updateProductDetail = async(req, res) => {
     try{
+        // req.body.value
         const {
             id, 
             productStatus, 

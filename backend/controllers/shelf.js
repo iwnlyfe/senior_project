@@ -44,6 +44,7 @@ exports.addShelf = async(req, res) => {
 
 exports.updateShelf = async(req, res) => {
     try{
+        // req.body.value
         const {
             id, 
             floorNumber, 

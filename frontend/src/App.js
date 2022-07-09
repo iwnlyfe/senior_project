@@ -76,7 +76,7 @@ function App() {
           <ProductCreate />
           </UserRoute>
       }/>
-      <Route path='/productupdate' element={
+      <Route path='/productupdate/:id' element={
         <UserRoute>
           <ProductUpdate />
         </UserRoute>

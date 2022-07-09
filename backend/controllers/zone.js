@@ -41,6 +41,7 @@ exports.addZone = async(req, res) => {
 
 exports.updateZone = async(req, res) => {
     try{
+        // req.body.value
         const {id, zonetype} = req.body
         await Zone.updateOne(
             {_id: id},

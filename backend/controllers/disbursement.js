@@ -41,6 +41,7 @@ exports.addDisbursement = async(req, res) => {
 
 exports.updateDisbursement = async(req, res) => {
     try{
+        // req.body.value
         const {
             id, 
             user_id, 
