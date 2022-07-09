@@ -67,8 +67,8 @@ export default function ProductDetailView() {
       <Menu />
       <div  class='col-9 mx-2'>
         <div class='row'>
-          <h1 class='col-10'>ProductDetail View</h1>
-          <a href='productcreate' class='btn btn-outline-secondary py-0 my-3 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3'>ProductDetail View</h1>
+          <a href='productcreate' class='btn btn-outline-secondary py-0 my-4 btn-lg'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
@@ -85,7 +85,7 @@ export default function ProductDetailView() {
             {products.map((product,index)=>(
             <tbody key={index}>
               <tr>
-                <th scope="row">1</th>
+                <th scope="row">{index +1}</th>
                 <th >{product.productStatus}</th>
                 <th >{product.receiveDate}</th>
                 <th >{product.expireDate}</th>
