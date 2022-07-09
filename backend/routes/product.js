@@ -20,16 +20,16 @@ router.post('/addProduct', addProduct)
 router.post('/updateProduct', updateProduct)
 
 //@Endpoint http://localhost:3001/api/deleteProduct
-//@method GET
+//@method DELETE
 //@Access Publish
-router.get('/deleteProduct/:id', deleteProduct)
+router.delete('/deleteProduct/:id', deleteProduct)
 
 //@Endpoint http://localhost:3001/api/disbursement
 //@method POST
 //@Access Publish
 router.post('/disbursement', disbursement)
 
-//@Endpoint http://localhost:3001/api/withdraw
+//@Endpoint http://localhost:3001/api/withdraw -> return
 //@method POST
 //@Access Publish
 router.post('/withdraw', withdraw)
