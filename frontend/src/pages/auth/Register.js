@@ -61,7 +61,7 @@ export default function Register() {
     //     <button disabled={value.password.length < 4}>Submit</button>
     //   </form>
     // </div>
-    <div class="align">
+    <div class="align body">
       <div class="row">
           <div class="col-md-11 mt-60 mx-md-auto">
               <div class="login-box bg-white pl-0">
