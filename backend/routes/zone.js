@@ -2,12 +2,17 @@ const express = require('express')
 const router = express.Router()
 
 //controller 
-const { findAllZone, addZone, updateZone, deleteZone } = require('../controllers/zone')
+const { findAllZone, addZone, updateZone, deleteZone, findOneZone } = require('../controllers/zone')
 
 //@Endpoint http://localhost:3001/api/findAllZone
 //@method GET
 //@Access Publish
 router.get('/findAllZone', findAllZone)
+
+//@Endpoint http://localhost:3001/api/findOneZone
+//@method GET
+//@Access Publish
+router.get('/findOneZone/:id', findOneZone)
 
 //@Endpoint http://localhost:3001/api/addZone
 //@method POST

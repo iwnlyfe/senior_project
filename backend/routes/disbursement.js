@@ -2,12 +2,17 @@ const express = require('express')
 const router = express.Router()
 
 //controller 
-const { findAllDisbursement, addDisbursement, deleteDisbursement, updateDisbursement } = require('../controllers/disbursement')
+const { findAllDisbursement, addDisbursement, deleteDisbursement, updateDisbursement, findOneDisbursement } = require('../controllers/disbursement')
 
 //@Endpoint http://localhost:3001/api/findAllDisbursement
 //@method GET
 //@Access Publish
 router.get('/findAllDisbursement', findAllDisbursement)
+
+//@Endpoint http://localhost:3001/api/findOneDisbursement
+//@method GET
+//@Access Publish
+router.get('/findOneDisbursement/:id', findOneDisbursement)
 
 //@Endpoint http://localhost:3001/api/addDisbursement
 //@method POST

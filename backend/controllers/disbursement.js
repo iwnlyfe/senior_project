@@ -10,6 +10,17 @@ exports.findAllDisbursement = async(req, res) => {
     }
 }
 
+exports.findOneDisbursement = async(req, res) => {
+    try{
+        const {id} = req.params
+        const disbursement = await Disbursement.findOne({_id: id}).exec()
+        res.send(disbursement)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
 exports.addDisbursement = async(req, res) => {
     try{
         const {user_id, product_id, quantity, date, state} = req.body

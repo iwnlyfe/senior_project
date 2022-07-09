@@ -10,6 +10,17 @@ exports.findAllProductDetail = async(req, res) => {
     }
 }
 
+exports.findOneProductDetail = async(req, res, next) => {
+    try{
+        const {id} = req.params
+        const productDetail = await ProductDetail.findOne({_id: id}).exec()
+        res.send(productDetail)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
 exports.addProductDetail = async(req, res) => {
     try{
         const {productStatus, receiveDate, expireDate, receiveQuantity, product_id} = req.body

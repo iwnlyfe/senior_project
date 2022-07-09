@@ -10,6 +10,17 @@ exports.findAllShelf = async(req, res) => {
     }
 }
 
+exports.findOneShelf = async(req, res, next) => {
+    try{
+        const {id} = req.params
+        const shelf = await Shelf.findOne({_id: id}).exec()
+        res.send(shelf)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
 exports.addShelf = async(req, res) => {
     try{
         const {floorNumber, lockNumber, shelfStatus, zone_id} = req.body;

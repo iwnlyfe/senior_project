@@ -1,8 +1,20 @@
 const Product = require('../models/product')
+var mongoose = require('mongoose');
 
 exports.findAllProduct = async(req, res, next) => {
     try{
         const product = await Product.find({})
+        res.send(product)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
+exports.findOneProduct = async(req, res, next) => {
+    try{
+        const {id} = req.params
+        const product = await Product.findOne({_id: id}).exec()
         res.send(product)
     }catch(err){
         console.log(err)

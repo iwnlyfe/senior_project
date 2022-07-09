@@ -10,6 +10,17 @@ exports.findAllZone = async(req, res) => {
     }
 }
 
+exports.findOneZone = async(req, res, next) => {
+    try{
+        const {id} = req.params
+        const zone = await Zone.findOne({_id: id}).exec()
+        res.send(zone)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
 exports.addZone = async(req, res) => {
     try{
         const {zonetype} = req.body
