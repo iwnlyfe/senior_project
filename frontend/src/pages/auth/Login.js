@@ -39,27 +39,6 @@ export default function Login() {
       const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault()
-<<<<<<< HEAD
-        // console.log(value)
-          login(value).then(res => {
-            console.log(res.data)
-            // alert(res.data)
-            dispatch({type: 'LOGIN',
-            payload: {
-                token: res.data.token,
-                username: res.data.payload.user.username,
-                role: res.data.payload.user.role
-            }
-        });
-        localStorage.setItem('token', res.data.token)
-        roleBaseRedirect(res.data.payload.user.role)
-          }).catch(err => {
-            console.log(err.response)
-            alert(err.response)
-          });
-      }
-      
-=======
         if (value.username === "" || value.password === ""){
             Swal.fire({
                 icon: 'error',
@@ -96,7 +75,6 @@ export default function Login() {
         }
     }
 
->>>>>>> LoginIce
   return (
     // <div className='page'>
     //   <h1 className=''>Login Page</h1>
