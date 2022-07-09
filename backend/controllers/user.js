@@ -36,7 +36,7 @@ exports.updateUsers = async(req, res, next) => {
         const salt = await bcrypt.genSalt(10)
         // encrypt
         var newPassword = await bcrypt.hash(password, salt);
-        console.log(newPassword)
+        // console.log(newPassword)
 
         await User.findOneAndUpdate(
             {_id: id},
