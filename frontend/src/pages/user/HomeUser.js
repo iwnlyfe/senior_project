@@ -1,12 +1,15 @@
 import React from 'react'
-import Menu from '../../components/layout/Menu'
+import Sidebar from '../../components/layout/Sidebar'
+import './background.css'
 export default function HomeUser() {
 
   return (
     <div class='container-fluid'>
-      <h1> Home </h1>
+      
       <div className='row'>
-        <Menu />
+        <Sidebar />
+          <h1 className='bg-danger ml col-s-10'> Home </h1>
+          
       </div>
     </div>
   )

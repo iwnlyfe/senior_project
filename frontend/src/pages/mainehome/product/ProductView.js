@@ -1,9 +1,10 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
 import {findAllProduct} from '../../../functions/product'
-import Menu from '../../../components/layout/Menu'
+import Sidebar from '../../../components/layout/Sidebar'
 import { deleteProduct } from '../../../functions/product'
 import { Link } from 'react-router-dom'
+import './style.css'
 
 export default function ProductView() {
   const [products,setProduct] = useState([])
@@ -65,11 +66,11 @@ export default function ProductView() {
   return (
     <div class='container-fluid'>
     <div class='row'>
-      <Menu />
-      <div  class='col-9 mx-2'>
+      <Sidebar />
+      <div  class='ml col-s-10'>
         <div class='row'>
           <h1 class='col-10 mt-3'>Product View</h1>
-          <a href='productcreate' class='btn btn-outline-secondary py-0 my-4 btn-lg'>Create</a>
+            <a href='productcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >

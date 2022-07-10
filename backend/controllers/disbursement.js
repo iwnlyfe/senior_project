@@ -43,7 +43,7 @@ exports.updateDisbursement = async(req, res) => {
     try{
         // req.body.value
         const {
-            id, 
+            _id, 
             user_id, 
             product_id, 
             quantity, 
@@ -58,7 +58,7 @@ exports.updateDisbursement = async(req, res) => {
             state
         }
         await Disbursement.updateOne(
-            {_id: id},
+            {_id: _id},
             {$set: newDisbursement}
         )
         res.send('Update Disbursement Success!')

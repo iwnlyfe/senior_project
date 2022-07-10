@@ -23,6 +23,7 @@ exports.findOneProductDetail = async(req, res, next) => {
 
 exports.addProductDetail = async(req, res) => {
     try{
+        // console.log(req.body)
         const {productStatus, receiveDate, expireDate, receiveQuantity, product_id} = req.body
         var ProductDeatil = new ProductDetail({
             productStatus, 
@@ -43,7 +44,7 @@ exports.updateProductDetail = async(req, res) => {
     try{
         // req.body.value
         const {
-            id, 
+            _id, 
             productStatus, 
             receiveDate,
             expireDate, 
@@ -59,7 +60,7 @@ exports.updateProductDetail = async(req, res) => {
             product_id
         }
         await ProductDetail.updateOne(
-            {_id: id},
+            {_id: _id},
             {$set: newProductDetail}
         )
         res.send('Update ProductDetail Success!')

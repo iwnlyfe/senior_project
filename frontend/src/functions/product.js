@@ -9,8 +9,7 @@ export const addProduct = async(value) =>{
 }
 
 export const updateProduct = async(value) =>{
-    // return await axios.put(process.REACT_APP_API + '/updateProduct', value)
-    return await axios.put("http://localhost:3001/api/updateProduct", value)
+    return await axios.put(process.env.REACT_APP_API + '/updateProduct', value)
 }
 
 export const deleteProduct = async(id) =>{

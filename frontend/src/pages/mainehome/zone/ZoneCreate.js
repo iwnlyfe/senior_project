@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './style.css'
-import { addProduct } from '../../../functions/product'
+import { addZone } from '../../../functions/zone'
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 
@@ -18,13 +18,13 @@ export default function ZoneCreate() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addProduct(value)
+        addZone(value)
         .then(res =>{
             Swal.fire(
-                value.productName,
-                'Successful product creation',
+                value.zonetype,
+                'Successful Zone creation',
                 'success',
-                navigate('/productview')    
+                navigate('/zoneview')    
             )
         }).catch(err =>{
             Swal.fire('แจ้งเตือน',
@@ -46,7 +46,7 @@ export default function ZoneCreate() {
                                 <span> Zone </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='productName' placeholder='Please name the zone.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='zonetype' placeholder='Please name the zone.' onChange={handleChange} required />
                             </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>
