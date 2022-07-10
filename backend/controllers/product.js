@@ -45,7 +45,9 @@ exports.addProduct = async(req, res) => {
 
 exports.updateProduct = async(req, res) => {
     try{
-        const {id, productName, quantity, price, group } = req.body;
+        // req.body.value
+        console.log('updateproduct',req.body)
+        const {_id, productName, quantity, price, group } = req.body;
         var newProudct = {
             productName,
             quantity,
@@ -53,7 +55,7 @@ exports.updateProduct = async(req, res) => {
             group
         }
         await Product.updateOne(
-            {_id: id},
+            {_id: _id},
             {$set: newProudct}
         )
         res.send('Update Product Success!!')

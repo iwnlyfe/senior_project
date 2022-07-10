@@ -1,21 +1,22 @@
 import React from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react'
-import { findOneProduct, updateProduct } from '../../../functions/product';
+import { findOneProductDetail, updateProductDetail } from '../../../functions/productdetail';
 import Swal from 'sweetalert2';
-export default function ProductUpdate() {
+export default function ProductDetailUpdate() {
      const navigate = useNavigate();
     const {id} = useParams()
     const [product,setProduct] = useState({
         _id: "",
-        productName: "",
-        quantity: "",
-        price: "",
-        group: ""
+        productStatus: "",
+        receiveDate: "",
+        expireDate: "",
+        receiveQuantity: "",
+        product_id: ""
       })
     
     useEffect(() =>{
-        findOneProduct(id)
+        findOneProductDetail(id)
         .then(response =>{
             console.log(response.data)
             setProduct(response.data)
@@ -36,7 +37,7 @@ export default function ProductUpdate() {
      const handleSubmit = (e) => {
         // console.log('product', product)
          e.preventDefault()
-          updateProduct(product)
+         updateProductDetail(product)
          .then(res =>{
             console.log(res.data)
          }).catch(err =>{
@@ -55,28 +56,34 @@ export default function ProductUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> Product </span>
+                                <span> productStatus </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='productName' value={product.productName} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control' type='text' name='productStatus' value={product.productStatus} onChange={handleChange} required />
                            </div>
                            <div>
-                                <span> quantity </span>
+                                <span> receiveDate </span>
                             </div>
                            <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='quantity' value={product.quantity} onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='receiveDate' value={product.receiveDate} onChange={handleChange} required />
                              </div>
                              <div>
-                                <span> price </span>
+                                <span> expireDate </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='price' value={product.price} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control' type='text' name='expireDate' value={product.expireDate} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> group </span>
+                                 <span> receiveQuantity </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='group' value={product.group} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control' type='text' name='receiveQuantity' value={product.receiveQuantity} onChange={handleChange} required />
+                             </div>
+                             <div>
+                                 <span> product_id </span>
+                             </div>
+                             <div>
+                                 <input className='rounded-pill border-0 form-control' type='text' name='product_id' value={product.product_id} onChange={handleChange} required />
                              </div>
                              <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                          </div>

@@ -1,24 +1,24 @@
 import React from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
 import { useState,useEffect } from 'react'
-import { findOneProduct, updateProduct } from '../../../functions/product';
+import { findOneShelf, updateShelf } from '../../../functions/shelf';
 import Swal from 'sweetalert2';
-export default function ProductUpdate() {
+export default function ShelfUpdate() {
      const navigate = useNavigate();
     const {id} = useParams()
-    const [product,setProduct] = useState({
+    const [shelf,setshelf] = useState({
         _id: "",
-        productName: "",
-        quantity: "",
-        price: "",
-        group: ""
+        floorNumber: "",
+        lockNumber: "",
+        shelfStatus: "",
+        zone_id: ""
       })
     
     useEffect(() =>{
-        findOneProduct(id)
+        findOneShelf(id)
         .then(response =>{
             console.log(response.data)
-            setProduct(response.data)
+            setshelf(response.data)
            
             //  console.log(data)
         }).catch(err => {
@@ -27,7 +27,7 @@ export default function ProductUpdate() {
     }, [])
 
      const handleChange = (e) => {
-         setProduct({...product, 
+        setshelf({...shelf, 
            [e.target.name]: e.target.value
          })
      }
@@ -36,7 +36,7 @@ export default function ProductUpdate() {
      const handleSubmit = (e) => {
         // console.log('product', product)
          e.preventDefault()
-          updateProduct(product)
+         updateShelf(shelf)
          .then(res =>{
             console.log(res.data)
          }).catch(err =>{
@@ -46,7 +46,7 @@ export default function ProductUpdate() {
      }
     return(
         <div>
-            <h1>ProductUpdate</h1>
+            <h1>ShelfUpdate</h1>
             <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
@@ -55,28 +55,28 @@ export default function ProductUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> Product </span>
+                                <span> floorNumber </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='productName' value={product.productName} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control' type='text' name='floorNumber' value={shelf.floorNumber} onChange={handleChange} required />
                            </div>
                            <div>
-                                <span> quantity </span>
+                                <span> lockNumber </span>
                             </div>
                            <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='quantity' value={product.quantity} onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='lockNumber' value={shelf.lockNumber} onChange={handleChange} required />
                              </div>
                              <div>
-                                <span> price </span>
+                                <span> shelfStatus </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='price' value={product.price} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' value={shelf.shelfStatus} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> group </span>
+                                 <span> zone_id </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='group' value={product.group} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control' type='text' name='zone_id' value={shelf.zone_id} onChange={handleChange} required />
                              </div>
                              <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                          </div>

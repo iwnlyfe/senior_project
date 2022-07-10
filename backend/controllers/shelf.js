@@ -44,8 +44,9 @@ exports.addShelf = async(req, res) => {
 
 exports.updateShelf = async(req, res) => {
     try{
+        // req.body.value
         const {
-            id, 
+            _id, 
             floorNumber, 
             lockNumber, 
             shelfStatus, 
@@ -58,7 +59,7 @@ exports.updateShelf = async(req, res) => {
             zone_id
         }
         await Shelf.updateOne(
-            {_id: id},
+            {_id: _id},
             {$set: newShelf}
         )
         res.send('Update Shelf Success!')

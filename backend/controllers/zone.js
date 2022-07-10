@@ -41,9 +41,11 @@ exports.addZone = async(req, res) => {
 
 exports.updateZone = async(req, res) => {
     try{
-        const {id, zonetype} = req.body
+        console.log(req.body)
+        // req.body.value
+        const {_id, zonetype} = req.body
         await Zone.updateOne(
-            {_id: id},
+            {_id: _id},
             {zonetype: zonetype}
         )
         res.send('Update Zone Success!')
@@ -55,7 +57,7 @@ exports.updateZone = async(req, res) => {
 
 exports.deleteZone = async(req, res) => {
     try{
-        const {id} = req.body;
+        const {id} = req.params;
         await Zone.deleteOne(
             {_id: id}
         ).exec()

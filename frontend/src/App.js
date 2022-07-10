@@ -24,6 +24,11 @@ import ProductDetailView from './pages/mainehome/productdetail/ProductDetailView
 import ShelfView from './pages/mainehome/shelf/ShelfView';
 import DisbursementView from './pages/mainehome/disbursement/DisbursementView';
 import ZoneCreate from './pages/mainehome/zone/ZoneCreate';
+import ZoneUpdate from './pages/mainehome/zone/ZoneUpdate';
+import ShelfCreate from './pages/mainehome/shelf/ShelfCreate';
+import ShelfUpdate from './pages/mainehome/shelf/ShelfUpdate';
+import ProductDetailCreate from './pages/mainehome/productdetail/ProductDetailCreate';
+import ProductDetailUpdate from './pages/mainehome/productdetail/ProductDetailUpdate';
 
 function App() {
   const dispatch =  useDispatch()
@@ -76,7 +81,7 @@ function App() {
           <ProductCreate />
           </UserRoute>
       }/>
-      <Route path='/productupdate' element={
+      <Route path='/productupdate/:id' element={
         <UserRoute>
           <ProductUpdate />
         </UserRoute>
@@ -91,14 +96,39 @@ function App() {
           <ZoneCreate />
         </UserRoute>
       }/>
+      <Route path='/updatezone/:id' element={
+        <UserRoute>
+          <ZoneUpdate />
+        </UserRoute>
+      }/>
       <Route path='/productdetailview' element={
         <UserRoute>
           <ProductDetailView />
         </UserRoute>
       }/>
+      <Route path='/productdetailcreate' element={
+        <UserRoute>
+          <ProductDetailCreate />
+        </UserRoute>
+      }/>
+      <Route path='/productdetailupdate/:id' element={
+        <UserRoute>
+          <ProductDetailUpdate />
+        </UserRoute>
+      }/>
       <Route path='/shelfview' element={
         <UserRoute>
           <ShelfView />
+        </UserRoute>
+      }/>
+      <Route path='/shelfcreate' element={
+        <UserRoute>
+          <ShelfCreate />
+        </UserRoute>
+      }/>
+      <Route path='/shelfupdate/:id' element={
+        <UserRoute>
+          <ShelfUpdate />
         </UserRoute>
       }/>
       <Route path='/disbursementview' element={
