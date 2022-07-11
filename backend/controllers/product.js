@@ -36,7 +36,8 @@ exports.addProduct = async(req, res) => {
             group
         })
         await product.save();
-        res.send('Add Product Success!')
+        // res.send('Add Product Success!')
+        res.send(product)
     }catch(err){
         console.log(err)
         res.status(500).send('Server Error!')
@@ -82,7 +83,7 @@ exports.disbursement = async(req, res) => {
         const total = await Product.findOne({_id: id})
         .select('quantity').exec()
         // console.log('total',total.quantity)
-        var newQuantity = total.quantity - quantity;
+        var newQuantity = parseInt(total.quantity) - parseInt(quantity);
         await Product.updateOne(
             {_id: id},
             {quantity: newQuantity}
@@ -100,7 +101,7 @@ exports.withdraw = async(req, res) => {
         const total = await Product.findOne({_id: id})
         .select('quantity').exec()
         // console.log('total',total.quantity)
-        var newQuantity = total.quantity + quantity;
+        var newQuantity = parseInt(total.quantity) + parseInt(quantity);
         await Product.updateOne(
             {_id: id},
             {quantity: newQuantity}

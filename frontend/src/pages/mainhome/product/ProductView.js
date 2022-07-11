@@ -1,11 +1,12 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import {findAllProductDetail} from '../../../functions/productdetail'
+import {findAllProduct} from '../../../functions/product'
 import Sidebar from '../../../components/layout/Sidebar'
-import { deleteProductDetail } from '../../../functions/productdetail'
+import { deleteProduct } from '../../../functions/product'
 import { Link } from 'react-router-dom'
+import './style.css'
 
-export default function ProductDetailView() {
+export default function ProductView() {
   const [products,setProduct] = useState([])
   const Swal = require('sweetalert2')
 
@@ -20,7 +21,7 @@ export default function ProductDetailView() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProductDetail(id)
+        deleteProduct(id)
           .then(res => {
               Swal.fire(
                   'Deleted!',
@@ -42,7 +43,7 @@ export default function ProductDetailView() {
     })
   }
   const loadData = () =>{
-    findAllProductDetail()
+    findAllProduct()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -53,13 +54,13 @@ export default function ProductDetailView() {
   }
 
   useEffect(()=>{
-    findAllProductDetail()
+    findAllProduct()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
       })
       .catch(err=>{
-        console.log(err.prsponse.data)
+        console.log(err.response)
       });
   },[])
   return (
@@ -68,19 +69,18 @@ export default function ProductDetailView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>ProductDetail View</h1>
-          <a href='productdetailcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3'>Product View</h1>
+            <a href='productcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>productStatus</th>
-                <th scope='col'>receiveDate</th>
-                <th scope='col'>expireDate</th>
-                <th scope='col'>receiveQuantity</th>
-                <th scope='col'>product_id</th>
+                <th scope='col'>ProductName</th>
+                <th scope='col'>Quantity</th>
+                <th scope='col'>Price per unit</th>
+                <th scope='col'>Group</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -88,13 +88,12 @@ export default function ProductDetailView() {
             <tbody key={index}>
               <tr>
                 <th scope="row">{index +1}</th>
-                <th >{product.productStatus}</th>
-                <th >{product.receiveDate}</th>
-                <th >{product.expireDate}</th>
-                <th >{product.receiveQuantity}</th>
-                <th >{product.product_id}</th>
+                <th >{product.productName}</th>
+                <th >{product.quantity}</th>
+                <th >{product.price}</th>
+                <th >{product.group}</th>
                 <th>
-                <Link to={'/productdetailupdate/' + product._id } className='btn btn-outline-warning btn-sm mx-1'>
+                  <Link to={'/productupdate/' + product._id } className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>

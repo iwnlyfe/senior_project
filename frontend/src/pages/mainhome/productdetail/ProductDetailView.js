@@ -1,12 +1,12 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import {findAllProduct} from '../../../functions/product'
+import {findAllProductDetail} from '../../../functions/productdetail'
 import Sidebar from '../../../components/layout/Sidebar'
-import { deleteProduct } from '../../../functions/product'
+import { deleteProductDetail } from '../../../functions/productdetail'
 import { Link } from 'react-router-dom'
-import './style.css'
+import moment from 'moment'
 
-export default function ProductView() {
+export default function ProductDetailView() {
   const [products,setProduct] = useState([])
   const Swal = require('sweetalert2')
 
@@ -21,7 +21,7 @@ export default function ProductView() {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteProduct(id)
+        deleteProductDetail(id)
           .then(res => {
               Swal.fire(
                   'Deleted!',
@@ -38,12 +38,11 @@ export default function ProductView() {
                 })
               console.log(err.response)
           })
-        
       }
     })
   }
   const loadData = () =>{
-    findAllProduct()
+    findAllProductDetail()
     .then(response => {
       setProduct(response.data)
       // console.log(response.data)
@@ -54,10 +53,10 @@ export default function ProductView() {
   }
 
   useEffect(()=>{
-    findAllProduct()
+    findAllProductDetail()
     .then(response => {
       setProduct(response.data)
-      // console.log(response.data)
+      console.log(response.data[0].product[0].productName)
       })
       .catch(err=>{
         console.log(err.prsponse.data)
@@ -69,18 +68,19 @@ export default function ProductView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>Product View</h1>
-            <a href='productcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3'>ProductDetail View</h1>
+          <a href='productdetailcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>ProductName</th>
-                <th scope='col'>Quantity</th>
-                <th scope='col'>Price</th>
-                <th scope='col'>Group</th>
+                <th scope='col'>Product Status</th>
+                <th scope='col'>Receive date</th>
+                <th scope='col'>Expire date</th>
+                <th scope='col'>Receive Quantity</th>
+                <th scope='col'>Product Name</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -88,12 +88,20 @@ export default function ProductView() {
             <tbody key={index}>
               <tr>
                 <th scope="row">{index +1}</th>
-                <th >{product.productName}</th>
-                <th >{product.quantity}</th>
-                <th >{product.price}</th>
-                <th >{product.group}</th>
+                <th>{product.productStatus}</th>
+                {/* <th>{product.receiveDate}</th> */}
                 <th>
-                  <Link to={'/productupdate/' + product._id } className='btn btn-outline-warning btn-sm mx-1'>
+                  {/* {moment(product.receiveDate).locale('th').format('lll')} */}
+                  {moment(product.receiveDate).locale('th').format('lll')}
+                </th>
+                {/* <th>{product.expireDate}</th> */}
+                <th>
+                  {moment(product.expireDate).locale('th').format('ll')}
+                </th>
+                <th>{product.receiveQuantity}</th>
+                <th>{product.product[0].productName}</th>
+                <th>
+                <Link to={'/productdetailupdate/' + product._id } className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>

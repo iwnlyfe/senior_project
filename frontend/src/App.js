@@ -5,7 +5,7 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from './pages/home';
 import HomeAdmin from './pages/admin/HomeAdmin';
-import ProductView from "./pages/mainehome/product/ProductView";
+import ProductView from "./pages/mainhome/product/ProductView";
 import HomeUser from './pages/user/HomeUser';
 import ManagaAdmin from './pages/admin/ManageAdmin';
 // Layout
@@ -17,18 +17,18 @@ import { useDispatch } from 'react-redux';
 // Routes
 import UserRoute from './routes/UserRoute';
 import AdminRoute from './routes/AdminRoute';
-import ProductCreate from './pages/mainehome/product/ProductCreate';
-import ProductUpdate from './pages/mainehome/product/ProductUpdate';
-import ZoneView from './pages/mainehome/zone/ZoneView';
-import ProductDetailView from './pages/mainehome/productdetail/ProductDetailView';
-import ShelfView from './pages/mainehome/shelf/ShelfView';
-import DisbursementView from './pages/mainehome/disbursement/DisbursementView';
-import ZoneCreate from './pages/mainehome/zone/ZoneCreate';
-import ZoneUpdate from './pages/mainehome/zone/ZoneUpdate';
-import ShelfCreate from './pages/mainehome/shelf/ShelfCreate';
-import ShelfUpdate from './pages/mainehome/shelf/ShelfUpdate';
-import ProductDetailCreate from './pages/mainehome/productdetail/ProductDetailCreate';
-import ProductDetailUpdate from './pages/mainehome/productdetail/ProductDetailUpdate';
+import ProductCreate from './pages/mainhome/product/ProductCreate';
+import ProductUpdate from './pages/mainhome/product/ProductUpdate';
+import ZoneView from './pages/mainhome/zone/ZoneView';
+import ProductDetailView from './pages/mainhome/productdetail/ProductDetailView';
+import ShelfView from './pages/mainhome/shelf/ShelfView';
+import DisbursementView from './pages/mainhome/disbursement/DisbursementView';
+import ZoneCreate from './pages/mainhome/zone/ZoneCreate';
+import ZoneUpdate from './pages/mainhome/zone/ZoneUpdate';
+import ShelfCreate from './pages/mainhome/shelf/ShelfCreate';
+import ShelfUpdate from './pages/mainhome/shelf/ShelfUpdate';
+import ProductDetailCreate from './pages/mainhome/productdetail/ProductDetailCreate';
+import ProductDetailUpdate from './pages/mainhome/productdetail/ProductDetailUpdate';
 
 function App() {
   const dispatch =  useDispatch()
