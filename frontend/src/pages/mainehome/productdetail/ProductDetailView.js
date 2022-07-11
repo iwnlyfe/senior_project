@@ -68,25 +68,25 @@ export default function ProductDetailView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>ProductDetail View</h1>
-          <a href='productdetailcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3 ff'>Product detail view</h1>
+          <a href='productdetailcreate' class='btn btn-info py-0 my-4 btn-lg ff'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
-              <tr>
+              <tr className='fk'>
                 <th scope='col'>#</th>
-                <th scope='col'>productStatus</th>
-                <th scope='col'>receiveDate</th>
-                <th scope='col'>expireDate</th>
-                <th scope='col'>receiveQuantity</th>
+                <th scope='col'>Product status</th>
+                <th scope='col'>Receive date</th>
+                <th scope='col'>Expire date</th>
+                <th scope='col'>Receive quantity</th>
                 <th scope='col'>product_id</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
             {products.map((product,index)=>(
             <tbody key={index}>
-              <tr>
+              <tr className='fv'>
                 <th scope="row">{index +1}</th>
                 <th >{product.productStatus}</th>
                 <th >{product.receiveDate}</th>

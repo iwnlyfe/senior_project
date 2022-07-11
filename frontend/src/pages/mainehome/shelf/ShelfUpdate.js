@@ -46,7 +46,7 @@ export default function ShelfUpdate() {
      }
     return(
         <div>
-            <h1>ShelfUpdate</h1>
+            <h1 className='ff'>Update shelf</h1>
             <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
@@ -55,30 +55,30 @@ export default function ShelfUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> floorNumber </span>
+                                <span className='fk'> Floor number </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='floorNumber' value={shelf.floorNumber} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control fv' type='text' name='floorNumber' value={shelf.floorNumber} onChange={handleChange} required />
                            </div>
                            <div>
-                                <span> lockNumber </span>
+                                <span className='fk'> Lock number </span>
                             </div>
                            <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='lockNumber' value={shelf.lockNumber} onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='lockNumber' value={shelf.lockNumber} onChange={handleChange} required />
                              </div>
                              <div>
-                                <span> shelfStatus </span>
+                                <span className='fk'> Shelf status </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' value={shelf.shelfStatus} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='shelfStatus' value={shelf.shelfStatus} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> zone_id </span>
+                                 <span className='fk'> zone_id </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='zone_id' value={shelf.zone_id} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='zone_id' value={shelf.zone_id} onChange={handleChange} required />
                              </div>
-                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                          </div>
                        
                         

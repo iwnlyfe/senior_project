@@ -46,7 +46,7 @@ export default function ProductUpdate() {
      }
     return(
         <div>
-            <h1>ProductUpdate</h1>
+            <h1 className='ff'>Update product</h1>
             <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
@@ -55,30 +55,30 @@ export default function ProductUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> Product </span>
+                                <span className='fk'> Product name </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='productName' value={product.productName} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control fv' type='text' name='productName' value={product.productName} onChange={handleChange} required />
                            </div>
                            <div>
-                                <span> quantity </span>
+                                <span className='fk'> Quantity </span>
                             </div>
                            <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='quantity' value={product.quantity} onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='quantity' value={product.quantity} onChange={handleChange} required />
                              </div>
                              <div>
-                                <span> price </span>
+                                <span className='fk'> Price per unit </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='price' value={product.price} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='price' value={product.price} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> group </span>
+                                 <span className='fk'> Group </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='group' value={product.group} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='group' value={product.group} onChange={handleChange} required />
                              </div>
-                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                          </div>
                        
                         

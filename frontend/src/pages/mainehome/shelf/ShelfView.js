@@ -68,24 +68,24 @@ export default function ShelfView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>Shelfs View</h1>
-          <a href='shelfcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3 ff'>Shelf view</h1>
+          <a href='shelfcreate' class='btn btn-info py-0 my-4 btn-lg ff'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
-              <tr>
+              <tr className='fk'>
                 <th scope='col'>#</th>
-                <th scope='col'>floorNumber</th>
-                <th scope='col'>lockNumber</th>
-                <th scope='col'>shelfStatus</th>
+                <th scope='col'>Floor number</th>
+                <th scope='col'>Lock number</th>
+                <th scope='col'>Shelf status</th>
                 <th scope='col'>zone_id</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
             {shelfs.map((shelf,index)=>(
             <tbody key={index}>
-              <tr>
+              <tr className='fv'>
                 <th scope="row">{index +1}</th>
                 <th >{shelf.floorNumber}</th>
                 <th >{shelf.lockNumber}</th>

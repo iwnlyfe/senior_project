@@ -68,25 +68,25 @@ export default function DisbursementView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>Disbursement View</h1>
-          <a href='productcreate' class='btn btn-outline-secondary py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3 ff'>Disbursement view</h1>
+          <a href='productcreate' class='btn btn-outline-secondary py-0 my-4 btn-lg ff'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
-              <tr>
+              <tr className='fk'>
                 <th scope='col'>#</th>
                 <th scope='col'>user_id</th>
                 <th scope='col'>product_id</th>
-                <th scope='col'>quantity</th>
-                <th scope='col'>date</th>
-                <th scope='col'>state</th>
+                <th scope='col'>Quantity</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>State</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
             {products.map((product,index)=>(
             <tbody key={index}>
-              <tr>
+              <tr className='fv'>
                 <th scope="row">{index +1}</th>
                 <th >{product.user_id}</th>
                 <th >{product.product_id}</th>

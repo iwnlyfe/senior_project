@@ -47,7 +47,7 @@ export default function ProductDetailUpdate() {
      }
     return(
         <div>
-            <h1>ProductUpdate</h1>
+            <h1 className='ff'>Update product detail</h1>
             <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
@@ -56,36 +56,36 @@ export default function ProductDetailUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> productStatus </span>
+                                <span className='fk'> productStatus </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='productStatus' value={product.productStatus} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control fv' type='text' name='productStatus' value={product.productStatus} onChange={handleChange} required />
                            </div>
                            <div>
-                                <span> receiveDate </span>
+                                <span className='fk'> receiveDate </span>
                             </div>
                            <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='receiveDate' value={product.receiveDate} onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='receiveDate' value={product.receiveDate} onChange={handleChange} required />
                              </div>
                              <div>
-                                <span> expireDate </span>
+                                <span className='fk'> expireDate </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='expireDate' value={product.expireDate} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='expireDate' value={product.expireDate} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> receiveQuantity </span>
+                                 <span className='fk'> receiveQuantity </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='receiveQuantity' value={product.receiveQuantity} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='receiveQuantity' value={product.receiveQuantity} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> product_id </span>
+                                 <span className='fk'> product_id </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='product_id' value={product.product_id} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control fv' type='text' name='product_id' value={product.product_id} onChange={handleChange} required />
                              </div>
-                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                          </div>
                        
                         

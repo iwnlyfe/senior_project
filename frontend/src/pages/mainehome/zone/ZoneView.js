@@ -67,21 +67,21 @@ export default function ZoneView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>Zone View</h1>
-          <a href='zonecreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3 ff'>Zone view</h1>
+          <a href='zonecreate' class='btn btn-info py-0 my-4 btn-lg ff'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
-              <tr>
+              <tr className='fk'>
                 <th scope='col'>#</th>
-                <th scope='col'>zonetype</th>
+                <th scope='col'>Zone type</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
             {zone.map((zone,index)=>(
             <tbody key={index}>
-              <tr>
+              <tr className='fv'>
                 <th scope="row">{index +1}</th>
                 <th >{zone.zonetype}</th>
                 <th>

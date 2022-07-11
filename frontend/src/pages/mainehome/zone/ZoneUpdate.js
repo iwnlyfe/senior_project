@@ -43,7 +43,7 @@ export default function ZoneUpdate() {
      }
     return(
         <div>
-            <h1>ZoneUpdate</h1>
+            <h1 className='ff'>Update zone</h1>
             <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
@@ -52,12 +52,12 @@ export default function ZoneUpdate() {
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
                                 <div>
-                                <span> ZoneType </span>
+                                <span className='fk'> Zone type </span>
                                 </div>
                             <div>
-                               <input className='rounded-pill border-0 form-control' type='text' name='zonetype' value={zone.zonetype} onChange={handleChange} required />
+                               <input className='rounded-pill border-0 form-control fv' type='text' name='zonetype' value={zone.zonetype} onChange={handleChange} required />
                            </div>
-                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                          </div>
                        
                         

@@ -69,24 +69,24 @@ export default function ProductView() {
       <Sidebar />
       <div  class='ml col-s-10'>
         <div class='row'>
-          <h1 class='col-10 mt-3'>Product View</h1>
-            <a href='productcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
+          <h1 class='col-10 mt-3 ff'>Product view</h1>
+            <a href='productcreate' class='btn btn-info py-0 my-4 btn-lg ff'>Create</a>
         </div>
           
           <table class='table table-bordered table-light' >
             <thead>
-              <tr>
+              <tr className='fk'>
                 <th scope='col'>#</th>
-                <th scope='col'>ProductName</th>
+                <th scope='col'>Product name</th>
                 <th scope='col'>Quantity</th>
-                <th scope='col'>Price</th>
+                <th scope='col'>Price per unit</th>
                 <th scope='col'>Group</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
             {products.map((product,index)=>(
             <tbody key={index}>
-              <tr>
+              <tr className='fv'>
                 <th scope="row">{index +1}</th>
                 <th >{product.productName}</th>
                 <th >{product.quantity}</th>

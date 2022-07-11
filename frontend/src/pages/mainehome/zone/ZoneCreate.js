@@ -38,17 +38,17 @@ export default function ZoneCreate() {
     return(
         <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
-                <h1>CreateProduct</h1>
+                <h1 className='ff'>Create Zone</h1>
                 <div className='container col-4 '>
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                         <div className='card-body '>
                             <div>
-                                <span> Zone </span>
+                                <span className='fk'> Zone </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='zonetype' placeholder='Please name the zone.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='zonetype' placeholder='Please name the zone.' onChange={handleChange} required />
                             </div>
-                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                         </div>
                     </div>
                 </div>

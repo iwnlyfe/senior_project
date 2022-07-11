@@ -26,3 +26,18 @@ table{
     .col-s-11 {width: 91.66%;}
     .col-s-12 {width: 100%;}
   }
+
+.ff{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.fk{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.fv{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+}

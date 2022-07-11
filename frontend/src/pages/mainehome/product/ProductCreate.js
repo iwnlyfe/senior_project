@@ -41,35 +41,35 @@ export default function ProductCreate() {
     return(
         <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
-                <h1>CreateProduct</h1>
+                <h1 className='ff'>Create product</h1>
                 <div className='container col-4 '>
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                         <div className='card-body '>
                             <div>
-                                <span> Product </span>
+                                <span className='fk'> Product </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='productName' placeholder='Please name the product.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='productName' placeholder='Please enter a product name.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> quantity </span>
+                                <span className='fk'> Quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='quantity' placeholder='Please number the quantity.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='quantity' placeholder='Please enter the number of product quantity.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> price </span>
+                                <span className='fk'> Price per unit </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='price' placeholder='Please number the price.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='price' placeholder='Please enter the price of product.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> group </span>
+                                <span className='fk'> Group </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='group' placeholder='Please the group.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='group' placeholder='Please enter the group.' onChange={handleChange} required />
                             </div>
-                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                         </div>
                     </div>
                 </div>

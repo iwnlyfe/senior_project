@@ -41,35 +41,35 @@ export default function ShelfCreate() {
     return(
         <div className='container-fluid'>
             <form className='form' onSubmit={handleSubmit}>
-                <h1>CreateShelf</h1>
+                <h1 className='ff'>Create shelf</h1>
                 <div className='container col-4 '>
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                         <div className='card-body '>
                             <div>
-                                <span> floorNumber </span>
+                                <span className='fk'> Floor number </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='floorNumber' placeholder='Please name the product.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='floorNumber' placeholder='Please name the product.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> lockNumber </span>
+                                <span className='fk'> Lock number </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='lockNumber' placeholder='Please number the quantity.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='lockNumber' placeholder='Please number the quantity.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> shelfStatus </span>
+                                <span className='fk'> Shelf status </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' placeholder='Please number the price.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='shelfStatus' placeholder='Please number the price.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> zone_id </span>
+                                <span className='fk'> zone_id </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='zone_id' placeholder='Please the group.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control fv' type='text' name='zone_id' placeholder='Please the group.' onChange={handleChange} required />
                             </div>
-                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
+                            <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3 ff'> Submit </button>
                         </div>
                     </div>
                 </div>
