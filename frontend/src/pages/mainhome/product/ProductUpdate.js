@@ -51,9 +51,9 @@ export default function ProductUpdate() {
             <form className='form' onSubmit={handleSubmit}>
                 <div className='container col-4 '>
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
-                        <div className='card-body' style={{fontSize: "20px"}}>
+                        <div className='card-body fontDivCreate'>
                                 {/* <input type="hidden" value={product._id} /> */}
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Product </span>
                             </div>
                             <div>
@@ -65,7 +65,7 @@ export default function ProductUpdate() {
                             <div>
                                 <input className='rounded-pill border-0 form-control' type='text' name='quantity' value={product.quantity} onChange={handleChange} required />
                             </div> */}
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Price per unit</span>
                             </div>
                             <div>

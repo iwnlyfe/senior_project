@@ -84,8 +84,8 @@ export default function ProductCreate() {
                 <h1>CreateProduct</h1>
                 <div className='container col-4'>
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded' style={{margin: "0.3rem"}}>
-                        <div className='card-body' style={{fontSize: "20px"}}>
-                            <div style={{marginBottom: "0.3rem"}}>
+                        <div className='card-body fontDivCreate'>
+                            <div className='marginDiv'>
                                 <span> Product </span>
                             </div>
                             <div>
@@ -98,25 +98,25 @@ export default function ProductCreate() {
                                 <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please number the quantity.' onChange={handleChange} required />
                             </div> */}
                             
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Price per unit </span>
                             </div>
                             <div>
-                                <input className='rounded-pill style={{marginBottom: "0.3rem"}}border-1 form-control' type='text' name='price' placeholder='Please number the price.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='price' placeholder='Please number the price.' onChange={handleChangeProduct}  />
                             </div>
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Group </span>
                             </div>
                             <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please the group.' onChange={handleChangeProduct}  />
                             </div>
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Receive quantity </span>
                             </div>
                             <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChangeProductDetail}  />
                             </div>
-                            <div style={{marginBottom: "0.3rem"}}>
+                            <div className='marginDiv'>
                                 <span> Expire date </span>
                             </div>
                             <div>

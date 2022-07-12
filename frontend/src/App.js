@@ -5,9 +5,24 @@ import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
 import Home from './pages/home';
 import HomeAdmin from './pages/admin/HomeAdmin';
-import ProductView from "./pages/mainhome/product/ProductView";
 import HomeUser from './pages/user/HomeUser';
 import ManagaAdmin from './pages/admin/ManageAdmin';
+import ProductView from "./pages/mainhome/product/ProductView";
+import ProductCreate from './pages/mainhome/product/ProductCreate';
+import ProductUpdate from './pages/mainhome/product/ProductUpdate';
+import ProductDetailView from './pages/mainhome/productdetail/ProductDetailView';
+import ProductDetailCreate from './pages/mainhome/productdetail/ProductDetailCreate';
+import ProductDetailUpdate from './pages/mainhome/productdetail/ProductDetailUpdate';
+import DisbursementView from './pages/mainhome/disbursement/DisbursementView';
+import DisbursementCreate from './pages/mainhome/disbursement/DisbursementCreate';
+import DisbursementUpdate from './pages/mainhome/disbursement/DisbursementUpdate';
+import ShelfView from './pages/mainhome/shelf/ShelfView';
+import ZoneView from './pages/mainhome/zone/ZoneView';
+import ZoneCreate from './pages/mainhome/zone/ZoneCreate';
+import ZoneUpdate from './pages/mainhome/zone/ZoneUpdate';
+import ShelfCreate from './pages/mainhome/shelf/ShelfCreate';
+import ShelfUpdate from './pages/mainhome/shelf/ShelfUpdate';
+
 // Layout
 import Header from './components/layout/Header';
 // functions
@@ -17,18 +32,6 @@ import { useDispatch } from 'react-redux';
 // Routes
 import UserRoute from './routes/UserRoute';
 import AdminRoute from './routes/AdminRoute';
-import ProductCreate from './pages/mainhome/product/ProductCreate';
-import ProductUpdate from './pages/mainhome/product/ProductUpdate';
-import ZoneView from './pages/mainhome/zone/ZoneView';
-import ProductDetailView from './pages/mainhome/productdetail/ProductDetailView';
-import ShelfView from './pages/mainhome/shelf/ShelfView';
-import DisbursementView from './pages/mainhome/disbursement/DisbursementView';
-import ZoneCreate from './pages/mainhome/zone/ZoneCreate';
-import ZoneUpdate from './pages/mainhome/zone/ZoneUpdate';
-import ShelfCreate from './pages/mainhome/shelf/ShelfCreate';
-import ShelfUpdate from './pages/mainhome/shelf/ShelfUpdate';
-import ProductDetailCreate from './pages/mainhome/productdetail/ProductDetailCreate';
-import ProductDetailUpdate from './pages/mainhome/productdetail/ProductDetailUpdate';
 
 function App() {
   const dispatch =  useDispatch()
@@ -134,6 +137,16 @@ function App() {
       <Route path='/disbursementview' element={
         <UserRoute>
           <DisbursementView />
+        </UserRoute>
+      }/>
+      <Route path='/disbursementcreate' element={
+        <UserRoute>
+          <DisbursementCreate />
+        </UserRoute>
+      }/>
+      <Route path='/disbursementupdate/:id' element={
+        <UserRoute>
+          <DisbursementUpdate />
         </UserRoute>
       }/>
         <Route path='/register' element={<Register />}/>

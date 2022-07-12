@@ -83,24 +83,24 @@ export default function ProductDetailUpdate() {
                 <form className='form' onSubmit={handleSubmit}>
                     <div className='container col-4 '>
                         <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
-                            <div className='card-body' style={{fontSize: "20px"}}>
+                            <div className='card-body fontDivCreate'>
                                 {/* <input type="hidden" value={product._id} /> */}
-                                <div style={{marginBottom: "0.3rem"}}>
+                                <div className='marginDiv'>
                                     <span> Product Status </span>
                                 </div>
                                 <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='productStatus' value={productDetail.productStatus} onChange={handleChange} required />
                                 </div>
-                                <div style={{marginBottom: "0.3rem"}}>
+                                <div className='marginDiv'>
                                     <span> Receive date </span>
                                 </div>
                                 <div>
                                     <input className='rounded-pill border-1 form-control' type='text' name='receiveDate' value={productDetail.receiveDate} onChange={handleChange} required />
                                 </div>
-                                <div style={{marginBottom: "0.3rem"}}>
+                                <div className='marginDiv'>
                                     <span> Expire date </span>
                                 </div>
-                                <div style={{marginBottom: "0.3rem"}}>
+                                <div className='marginDiv'>
                                     <input className='rounded-pill border-1 form-control' type='text' name='expireDate' value={productDetail.expireDate} onChange={handleChange} required />
                                 </div>
                                 <div>
@@ -109,7 +109,7 @@ export default function ProductDetailUpdate() {
                                 <div>
                                     <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' value={productDetail.receiveQuantity} onChange={handleChange} required />
                                 </div>
-                                <div style={{marginBottom: "0.3rem"}}>
+                                <div className='marginDiv'>
                                     <span> Product </span>
                                 </div>
                                 <div>
