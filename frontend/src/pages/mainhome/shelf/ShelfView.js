@@ -56,7 +56,7 @@ export default function ShelfView() {
     findAllShelf()
     .then(response => {
       setShelf(response.data)
-      // console.log(response.data)
+      console.log(response.data[0].zone[0].zonetype)
       })
       .catch(err=>{
         console.log(err.prsponse.data)
@@ -76,10 +76,10 @@ export default function ShelfView() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>floorNumber</th>
-                <th scope='col'>lockNumber</th>
-                <th scope='col'>shelfStatus</th>
-                <th scope='col'>zone_id</th>
+                <th scope='col'>FloorNumber</th>
+                <th scope='col'>LockNumber</th>
+                <th scope='col'>ShelfStatus</th>
+                <th scope='col'>Zonetype</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -89,8 +89,15 @@ export default function ShelfView() {
                 <td scope="row">{index +1}</td>
                 <td>{shelf.floorNumber}</td>
                 <td>{shelf.lockNumber}</td>
-                <td>{shelf.shelfStatus}</td>
-                <td>{shelf.zone_id}</td>
+                {/* <td>{shelf.shelfStatus}</td> */}
+                {shelf.shelfStatus == true
+                ? <td>เต็ม</td>
+                : <td>ว่าง</td>
+                }
+                {/* <td>{shelf.zone_id}</td> */}
+                {shelf.zone.map((zone) => (
+                  <td>{zone.zonetype}</td>
+                ))}
                 <td>
                 <Link to={'/shelfupdate/' + shelf._id } className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

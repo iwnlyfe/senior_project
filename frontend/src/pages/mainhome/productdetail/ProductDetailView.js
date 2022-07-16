@@ -76,11 +76,11 @@ export default function ProductDetailView() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
+                <th scope='col'>Product Name</th>
                 <th scope='col'>Product Status</th>
                 <th scope='col'>Receive date</th>
                 <th scope='col'>Expire date</th>
                 <th scope='col'>Receive Quantity</th>
-                <th scope='col'>Product Name</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -88,18 +88,18 @@ export default function ProductDetailView() {
             <tbody key={index}>
               <tr>
                 <td scope="row">{index +1}</td>
+                <td>{product.product[0].productName}</td>
                 <td>{product.productStatus}</td>
                 {/* <th>{product.receiveDate}</th> */}
                 <td>
                   {/* {moment(product.receiveDate).locale('th').format('lll')} */}
-                  {moment(product.receiveDate).locale('th').format('lll')}
+                  {moment(product.receiveDate).locale('th').format('ll')}
                 </td>
                 {/* <th>{product.expireDate}</th> */}
                 <td>
                   {moment(product.expireDate).locale('th').format('ll')}
                 </td>
                 <td>{product.receiveQuantity}</td>
-                <td>{product.product[0].productName}</td>
                 <td>
                 <Link to={'/productdetailupdate/' + product._id } className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

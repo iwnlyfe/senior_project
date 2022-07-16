@@ -5,23 +5,24 @@ import { findAllProduct, findOneProduct, withdraw, disbursement } from '../../..
 import Select from 'react-select'
 // import axios from 'axios'
 export default function DisbursementUpdate() {
-    const {id} = useParams()
-    const [disbursement, setDisbursement] = useState([])
-    const [productName, setProductName] = useState([])
-    const [defaultQuantity, setDefaultQuantity] = useState('')
-    const [defaultState, setDefaultState] = useState('')
-    const [productOption, setProductOption] = useState([])
-    const [product_id, setProduct_id] = useState('')
+    const {id} = useParams();
+    const navigate = useNavigate();
+    const [data, setData] = useState([]);
+    const [productName, setProductName] = useState([]);
+    const [defaultQuantity, setDefaultQuantity] = useState('');
+    const [defaultState, setDefaultState] = useState('');
+    const [productOption, setProductOption] = useState([]);
+    const [product_id, setProduct_id] = useState('');
 
     useEffect(() => {
-       loadDisbursement()
+       loadDisbursement();
        loadProduct();
     }, [])
 
     const loadDisbursement = async() => {
-        findOneDisbursement(id)
+        await findOneDisbursement(id)
         .then(res => {
-            setDisbursement(res.data)
+            setData(res.data)
             // console.log(res.data.quantity)
             setDefaultQuantity(res.data.quantity)
             setDefaultState(res.data.state)
@@ -56,7 +57,7 @@ export default function DisbursementUpdate() {
     }
 
     const handleChange = (e) => {
-        setDisbursement({...disbursement,
+        setData({...data,
             [e.target.name]: e.target.value
         })
     }
@@ -69,11 +70,11 @@ export default function DisbursementUpdate() {
     const handleChangeState = (e) => {
         console.log(e.target.value)
        if(e.target.value == 'เบิกจ่าย'){
-        setDisbursement({...disbursement,
+        setData({...data,
             [e.target.name]: true
         })
        }else{
-        setDisbursement({...disbursement,
+        setData({...data,
             [e.target.name]: false
         })
        }
@@ -81,23 +82,23 @@ export default function DisbursementUpdate() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(disbursement)
-        updateDisbursement(disbursement)
+        console.log(data)
+        updateDisbursement(data)
         .then(res => {
-            if(disbursement.state === defaultState){
-                if(defaultQuantity > disbursement.quantity){
-                    const quantity = defaultQuantity - disbursement.quantity
+            if(data.state === defaultState){
+                if(defaultQuantity > data.quantity){
+                    const quantity = defaultQuantity - data.quantity
                     console.log('disbursement', quantity)
-                    disbursement(disbursement.product_id, quantity)
+                    disbursement(data.product_id, quantity)
                     .then(res => {
                         console.log(res.data)
                     }).catch(err => {
                         console.log(err.response)
                     })
-                }else if(defaultQuantity < disbursement.quantity){
-                    const quantity = disbursement.quantity - defaultQuantity
+                }else if(defaultQuantity < data.quantity){
+                    const quantity = data.quantity - defaultQuantity
                     console.log('withdraw', quantity)
-                    withdraw(disbursement.product_id, quantity)
+                    withdraw(data.product_id, quantity)
                     .then(res => {
                         console.log(res.data)
                     }).catch(err => {
@@ -105,13 +106,28 @@ export default function DisbursementUpdate() {
                     })
                 }
             }else{
-                if(disbursement.state == true){
-                    
+                if(data.state == true){
+                    const quantity = defaultQuantity + data.quantity
+                    disbursement(data.product_id, quantity)
+                    .then(res => {
+                        console.log('สลับ disbursement',res.data)
+                    }).catch(err => {
+                        console.log(err.response)
+                    })
+                }else{
+                    const quantity = defaultQuantity + data.quantity
+                    withdraw(data.product_id, quantity)
+                    .then(res =>{
+                        console.log('สลับ withdraw',res.data)
+                    }).catch(err => {
+                        console.log(err.response)
+                    })
                 }
             }
+            navigate('/disbursementview')
             console.log(res.data)
         }).catch(err => {
-            console.log(err.response)
+            console.log(err)
         })
     }
 
@@ -138,7 +154,7 @@ export default function DisbursementUpdate() {
                                 <span> Quantity</span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please. Enter the quantity' value={disbursement.quantity} onChange={handleChange} required />
+                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please. Enter the quantity' value={data.quantity} onChange={handleChange} required />
                             </div>
                             <div className='marginDiv'>
                                 <span> State </span>
@@ -146,7 +162,10 @@ export default function DisbursementUpdate() {
                             {/* <div className='marginDiv'>
                                 <input className='rounded-pill border-1 form-control' type='text' name='state' required />
                             </div> */}
-                            <select name='state' onChange={handleChangeState} >
+                            <select name='state' defaultValue={"default"} onChange={handleChangeState} required>
+                                <option value={"default"} disabled>
+                                    select state
+                                </option>
                                 <option>เบิกจ่าย</option>
                                 <option>เบิกคืน</option>
                             </select>
