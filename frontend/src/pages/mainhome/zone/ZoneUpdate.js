@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react'
 import { findOneZone, updateZone } from '../../../functions/zone';
 import Swal from 'sweetalert2';
 export default function ZoneUpdate() {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const {id} = useParams()
     const [zone,setZone] = useState({
         _id: "",
@@ -16,7 +16,7 @@ export default function ZoneUpdate() {
         .then(response =>{
             console.log(response.data)
             setZone(response.data)
-        //    console.log(data)
+        //  console.log(data)
             //  console.log(data)
         }).catch(err => {
             console.log(err.prsponse.data)
