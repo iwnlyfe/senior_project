@@ -9,6 +9,7 @@ export default function Sidebar(){
       <a href="/disbursementview">Disbursement</a>
       <a href="/shelfview">Shelf</a>
       <a href="/zoneview">Zone</a>
+      <a href="/inMovement">ABC analysis</a>
     </div>
 )
 }

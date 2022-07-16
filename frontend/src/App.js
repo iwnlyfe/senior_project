@@ -29,6 +29,7 @@ import ShelfCreate from './pages/mainehome/shelf/ShelfCreate';
 import ShelfUpdate from './pages/mainehome/shelf/ShelfUpdate';
 import ProductDetailCreate from './pages/mainehome/productdetail/ProductDetailCreate';
 import ProductDetailUpdate from './pages/mainehome/productdetail/ProductDetailUpdate';
+import InMovement from './pages/mainehome/productdetail/InMovement';
 
 function App() {
   const dispatch =  useDispatch()
@@ -134,6 +135,11 @@ function App() {
       <Route path='/disbursementview' element={
         <UserRoute>
           <DisbursementView />
+        </UserRoute>
+      }/>
+      <Route path='/inMovement' element={
+        <UserRoute>
+          <InMovement />
         </UserRoute>
       }/>
         <Route path='/register' element={<Register />}/>
