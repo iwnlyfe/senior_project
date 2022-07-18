@@ -32,13 +32,17 @@ export default function InMovement() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
-                <th scope='col'>Product Status</th>
+                <th scope='col'>Movement</th>
+                <th scope='col'>%</th>
+                <th scope='col'>group</th>
               </tr>
             </thead>
             {movement.map((movement,index)=>(
             <tbody>
                 <th scope='col'>{movement._id}</th>
+                <th scope='col'>{movement.movement}</th>
                 <th scope='col'>{movement.totalQuantity}</th>
+                <th scope='col'>{movement.group}</th>
             </tbody>
             ))}
             {/* <tbody>

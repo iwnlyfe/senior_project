@@ -48,24 +48,27 @@ exports.outMovement = async(req, res) =>{
         }
     // ผลจากการลบของ = เบิกจ่าย - เบิกคืน
     // console.log("Disbursement ",disbursementPlus)
-
+    var productABC = []
+    var momenttotal = []
     // เบิกจ่าย + บวกสินค้าเข้าคลัง ให้เป็น Movement
     for(let i =0 ; i < productDetail.length ; i++){
         for(let j=0 ; j < disbursementPlus.length ; j++){
             if(JSON.stringify(productDetail[i]._id) == JSON.stringify(disbursementPlus[j]._id)){
-                
-                productDetail[i].totalQuantity = productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity
+                // productABC.push({ movement: productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity})
+                // productDetail[i].totalQuantity = productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity
+                momenttotal[i] = productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity
                 break;
             }
         }
     }
+    console.log(momenttotal)
 
     for (let index = 0; index < productDetail.length; index++) {
         totalMovement = totalMovement + productDetail[index].totalQuantity;
         // console.log(productDetail[index].totalQuantity ," = ", totalMovement)
     }
 
-
+    
     // หาเปอร์เซ็นต์ ABC
     for (let index = 0; index < productDetail.length; index++) {
         // console.log(productDetail[index].totalQuantity , "เริ่ม")
@@ -86,18 +89,22 @@ exports.outMovement = async(req, res) =>{
         if(scoreA >= 0){
             scoreA = scoreA - productDetail[index].totalQuantity
             console.log(productDetail[index]._id, "A", productDetail[index].totalQuantity)
-            productDetail[index].totalQuantity = "A"
+            productABC.push({_id: productDetail[index]._id , movement: momenttotal[index] , totalQuantity: productDetail[index].totalQuantity , group: "A"})
+            // productDetail[index].totalQuantity = "A"
+            // productDetail.push("A")
         }else if(scoreB >= 0){
             scoreB = scoreB - productDetail[index].totalQuantity
             console.log(productDetail[index]._id, "B" , productDetail[index].totalQuantity)
-            productDetail[index].totalQuantity = "B"
+            productABC.push({_id: productDetail[index]._id , movement: momenttotal[index] , totalQuantity: productDetail[index].totalQuantity , group: "B"})
+            // productDetail[index].totalQuantity = "B"
         }else{
             console.log(productDetail[index]._id, "C" , productDetail[index].totalQuantity)
-            productDetail[index].totalQuantity = "C"
+            productABC.push({_id: productDetail[index]._id , movement: momenttotal[index] , totalQuantity: productDetail[index].totalQuantity , group: "C"})
+            // productDetail[index].totalQuantity = "C"
         }
-
     }
-    res.send(productDetail)
+
+    res.send(productABC)
     // console.log(productDetail)
     }catch(err){
         console.log(err)
