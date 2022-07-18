@@ -32,6 +32,7 @@ import { useDispatch } from 'react-redux';
 // Routes
 import UserRoute from './routes/UserRoute';
 import AdminRoute from './routes/AdminRoute';
+import ProductDView from './pages/mainhome/product/ProductDView';
 
 function App() {
   const dispatch =  useDispatch()
@@ -87,6 +88,11 @@ function App() {
       <Route path='/productupdate/:id' element={
         <UserRoute>
           <ProductUpdate />
+        </UserRoute>
+      }/>
+      <Route path='/productDView/:id' element={
+        <UserRoute>
+          <ProductDView />
         </UserRoute>
       }/>
       <Route path='/zoneview' element={
