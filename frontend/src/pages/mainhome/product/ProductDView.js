@@ -30,12 +30,14 @@ export default function ProductDView() {
                                 <h5 class="text-center col-2 my-3">Group {product.group} </h5>
                             </div>
                             <div>
-                                <p>Quantity {product.quantity}</p>
-                                <p>Price per unit {product.price} บ.</p>
-                                {/* <p>Product Status</p> */}
-                                <p>เบิกไปกี่ครัง</p>
-                                <p>คืนไปกี่ครั้ง</p>
-                                <p></p>
+                                <h5>Quantity {product.quantity}</h5>
+                                <h5>Price per unit {product.price} บ.</h5>
+                                <p>Product Status ปกติ</p>
+                                <p>วันที่เข้า 25 / เดือน / 2552</p>
+                                <p>เบิกไปกี่ครัง 5 ครั้ง</p>
+                                <p>คืนไปกี่ครั้ง 3 ครั้ง</p>
+                                <p>ชั้นที่ 1 ถึง 10</p>
+                                <p>ล็อคที่ 2 ถึง 8</p>
                             </div>
                         </div>
                     </div>

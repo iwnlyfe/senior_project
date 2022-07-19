@@ -8,7 +8,7 @@ export default function HomeUser() {
       
       <div className='row'>
         <Sidebar />
-          <h1 className='bg-danger ml col-s-10'> Home </h1>
+          <h1 className='ml col-s-10'> Home </h1>
           
       </div>
     </div>
