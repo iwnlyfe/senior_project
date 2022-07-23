@@ -37,6 +37,7 @@ export default function ProductCreate() {
         await axios.post(process.env.REACT_APP_API + '/addProduct', {
             productName: product.productName,
             quantity: productDetail.receiveQuantity,
+            productStatus: "ปกติ",
             price: product.price,
             group: product.group
         }).then(async(res) => {
@@ -89,7 +90,7 @@ export default function ProductCreate() {
                                 <span> Product </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='productName' placeholder='Please name the product.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='productName' placeholder='Please. Enter product name.' onChange={handleChangeProduct}  />
                             </div>
                             {/* <div style={{marginBottom: "0.3rem"}}>
                                 <span> Quantity </span>
@@ -97,30 +98,29 @@ export default function ProductCreate() {
                             <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please number the quantity.' onChange={handleChange} required />
                             </div> */}
-                            
                             <div className='marginDiv'>
                                 <span> Price per unit </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='price' placeholder='Please number the price.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='price' placeholder='Please. Enter price per unit.' onChange={handleChangeProduct}  />
                             </div>
                             <div className='marginDiv'>
                                 <span> Group </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please the group.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please. Enter the group.' onChange={handleChangeProduct}  />
                             </div>
                             <div className='marginDiv'>
                                 <span> Receive quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChangeProductDetail}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please. Enter receiveQuantity.' onChange={handleChangeProductDetail}  />
                             </div>
                             <div className='marginDiv'>
                                 <span> Expire date </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.' onChange={handleChangeProductDetail}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please. Enter the expireDate.' onChange={handleChangeProductDetail}  />
                             </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>

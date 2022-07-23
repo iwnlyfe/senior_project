@@ -14,7 +14,6 @@ export default function ProductDetailCreate() {
     const [product, setProduct] = useState([])
     const [product_id, setProduct_id] = useState('')
     const [value, setValue] = useState({
-        productStatus: "",
         receiveDate: moment().toISOString(),
         expireDate: "",
         receiveQuantity: "",
@@ -36,7 +35,7 @@ export default function ProductDetailCreate() {
         console.log(product)
         console.log(product_id)
         await axios.post(process.env.REACT_APP_API + '/addProductDetail', {
-            productStatus: value.productStatus,
+            // productStatus: value.productStatus,
             receiveDate: value.receiveDate,
             expireDate: value.expireDate,
             receiveQuantity: value.receiveQuantity,
@@ -81,30 +80,30 @@ export default function ProductDetailCreate() {
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                         <div className='card-body fontDivCreate'>
                             <div className='marginDiv'>
-                                <span> Product Status </span>
-                            </div>
-                            <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='productStatus' placeholder='Please name the productStatus.' onChange={handleChange}  />
-                            </div>
-                            <div className='marginDiv'>
-                                <span> Expire date </span>
-                            </div>
-                            <div className='marginDiv'>
-                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.' onChange={handleChange}  />
-                            </div>
-                            <div className='marginDiv'>
-                                <span> Receive Quantity </span>
-                            </div>
-                            <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChange}  />
-                            </div>
-                            <div className='marginDiv'>
                                 <span> Product </span>
                             </div>
                             {/* <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='product_id' placeholder='Please number the product_id.' onChange={handleChange} required />
                             </div> */}
                             <Select options={product} onChange={handleChangeProduct}/>
+                            {/* <div className='marginDiv'>
+                                <span> Product Status </span>
+                            </div>
+                            <div>
+                                <input className='rounded-pill border-1 form-control' type='text' name='productStatus' placeholder='Please name the productStatus.' onChange={handleChange}  />
+                            </div> */}
+                            <div className='marginDiv'>
+                                <span> Receive Quantity </span>
+                            </div>
+                            <div>
+                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChange}  />
+                            </div>
+                            <div className='marginDiv' style={{marginTop:"3px"}}>
+                                <span> Expire date </span>
+                            </div>
+                            <div className='marginDiv'>
+                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.' onChange={handleChange}  />
+                            </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>
                     </div>

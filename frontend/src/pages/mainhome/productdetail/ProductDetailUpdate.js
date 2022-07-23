@@ -91,12 +91,12 @@ export default function ProductDetailUpdate() {
                                 <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='productStatus' value={productDetail.productStatus} onChange={handleChange} required />
                                 </div>
-                                <div className='marginDiv'>
+                                {/* <div className='marginDiv'>
                                     <span> Receive date </span>
                                 </div>
                                 <div>
                                     <input className='rounded-pill border-1 form-control' type='text' name='receiveDate' value={productDetail.receiveDate} onChange={handleChange} required />
-                                </div>
+                                </div> */}
                                 <div className='marginDiv'>
                                     <span> Expire date </span>
                                 </div>

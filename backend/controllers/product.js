@@ -24,7 +24,7 @@ exports.findOneProduct = async(req, res, next) => {
 
 exports.addProduct = async(req, res) => {
     try{
-        const {productName, quantity, price, group } = req.body;
+        const {productName, quantity, productStatus, price, group } = req.body;
         var product = await Product.findOne({productName})
         if(product) {
             return res.status(400).send('Product have been in stock.')
@@ -32,6 +32,7 @@ exports.addProduct = async(req, res) => {
         product = new Product({
             productName,
             quantity,
+            productStatus,
             price,
             group
         })
