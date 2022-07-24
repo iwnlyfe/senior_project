@@ -24,7 +24,7 @@ exports.findOneProduct = async(req, res, next) => {
 
 exports.addProduct = async(req, res) => {
     try{
-        const {productName, quantity, price, group } = req.body;
+        const {productName, quantity, productStatus, price, group } = req.body;
         var product = await Product.findOne({productName})
         if(product) {
             return res.status(400).send('Product have been in stock.')
@@ -32,11 +32,13 @@ exports.addProduct = async(req, res) => {
         product = new Product({
             productName,
             quantity,
+            productStatus,
             price,
             group
         })
         await product.save();
-        res.send('Add Product Success!')
+        // res.send('Add Product Success!')
+        res.send(product)
     }catch(err){
         console.log(err)
         res.status(500).send('Server Error!')
@@ -82,7 +84,7 @@ exports.disbursement = async(req, res) => {
         const total = await Product.findOne({_id: id})
         .select('quantity').exec()
         // console.log('total',total.quantity)
-        var newQuantity = total.quantity - quantity;
+        var newQuantity = parseInt(total.quantity) - parseInt(quantity);
         await Product.updateOne(
             {_id: id},
             {quantity: newQuantity}
@@ -100,7 +102,7 @@ exports.withdraw = async(req, res) => {
         const total = await Product.findOne({_id: id})
         .select('quantity').exec()
         // console.log('total',total.quantity)
-        var newQuantity = total.quantity + quantity;
+        var newQuantity = parseInt(total.quantity) + parseInt(quantity);
         await Product.updateOne(
             {_id: id},
             {quantity: newQuantity}

@@ -30,13 +30,13 @@ router.put('/updateProduct', updateProduct)
 router.delete('/deleteProduct/:id', deleteProduct)
 
 //@Endpoint http://localhost:3001/api/disbursement
-//@method POST
+//@method PATCH
 //@Access Publish
-router.post('/disbursement', disbursement)
+router.patch('/disbursement', disbursement)
 
 //@Endpoint http://localhost:3001/api/withdraw -> return
-//@method POST
+//@method PATCH
 //@Access Publish
-router.post('/withdraw', withdraw)
+router.patch('/withdraw', withdraw)
 
 module.exports = router

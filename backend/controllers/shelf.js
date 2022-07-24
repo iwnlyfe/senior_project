@@ -2,7 +2,15 @@ const Shelf = require('../models/shelf')
 
 exports.findAllShelf = async(req, res) => {
     try{
-        const shelf = await Shelf.find({})
+        // const shelf = await Shelf.find({})
+        const shelf = await Shelf.aggregate([
+            {$lookup: {
+                from: 'zones',
+                localField: 'zone_id',
+                foreignField: '_id',
+                as: 'zone'
+            }}
+        ])
         res.send(shelf)
     }catch(err){
         console.log(err)

@@ -2,7 +2,32 @@ const Disbursement = require('../models/disbursement')
 
 exports.findAllDisbursement = async(req, res) => {
     try{
-        const disbursement = await Disbursement.find({})
+        // const disbursement = await Disbursement.find({})
+        const disbursement = await Disbursement.aggregate(
+            [
+                {$lookup: {
+                    from: "products",
+                    localField: "product_id",
+                    foreignField: "_id",
+                    as: "product"
+                }},
+                {$lookup: {
+                    from: "users",
+                    localField: "user_id",
+                    foreignField: "_id",
+                    as: "user"
+                }},
+                {"$project": {
+                    "user_id": 1,
+                    "product_id": 1,
+                    "quantity": 1,
+                    "date": 1,
+                    "state": 1,
+                    "product.productName": 1,
+                    "user.username": 1
+                }}
+            ]
+        )
         res.send(disbursement)
     }catch(err){
         console.log(err)

@@ -1,8 +1,17 @@
+const { default: mongoose } = require('mongoose')
 const ProductDetail = require('../models/productDetail')
 
 exports.findAllProductDetail = async(req, res) => {
     try{
-        const productDetail = await ProductDetail.find({})
+        // const productDetail = await ProductDetail.find({})
+        const productDetail = await ProductDetail.aggregate([
+            {$lookup:{
+                from: 'products',
+                localField: 'product_id',
+                foreignField: '_id',
+                as: 'product'
+            }}
+        ])
         res.send(productDetail)
     }catch{
         console.log(err)
@@ -13,7 +22,19 @@ exports.findAllProductDetail = async(req, res) => {
 exports.findOneProductDetail = async(req, res, next) => {
     try{
         const {id} = req.params
-        const productDetail = await ProductDetail.findOne({_id: id}).exec()
+        console.log(id)
+        // const productDetail = await ProductDetail.findOne({_id: id}).exec()
+        const productDetail = await ProductDetail.aggregate([
+            {$lookup:{
+                from: 'products',
+                localField: 'product_id',
+                foreignField: '_id',
+                as: 'product'
+            }},
+            {$match: {
+                _id: mongoose.Types.ObjectId(id)
+            }}
+        ])
         res.send(productDetail)
     }catch(err){
         console.log(err)

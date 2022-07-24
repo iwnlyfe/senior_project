@@ -50,3 +50,12 @@ export const deleteUser = async(authtoken, id) => {
         }
     });
 }
+
+export const findUserByName = async(authtoken, username) => {
+    return await axios.get(process.env.REACT_APP_API + '/findUserByname/'+ username,
+    {
+        headers:{
+            authtoken,
+        }
+    })
+}

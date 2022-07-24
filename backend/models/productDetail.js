@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 
 const ProductDetailSchema = new mongoose.Schema(
     {
-        productStatus:{type: String},
         receiveDate:{type: Date, default: Date.now},
         expireDate:{type: Date},
         receiveQuantity:{type: Number},

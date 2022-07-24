@@ -1,13 +1,12 @@
 const mongoose = require('mongoose')
-// const mongodb = require('mongodb')
-let _db = mongoose.connect(process.env.DATABASE)
 
 const ProductSchema = new mongoose.Schema(
     {
         productName:{type: String},
         quantity:{type: Number},
+        productStatus:{type: String},
         price:{type: Number},
-        group:{type: String}
+        group:{type: String, default: 'C'}
     }
 )
 module.exports = product = mongoose.model('products', ProductSchema)

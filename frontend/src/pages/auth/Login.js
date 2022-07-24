@@ -67,7 +67,7 @@ export default function Login() {
                 console.log(err)
                 Swal.fire({
                     icon: 'error',
-                    title: err.response.data,
+                    title: err.response,
                     text: 'Please, Try again.'
                   })
           });

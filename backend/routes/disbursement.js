@@ -20,9 +20,9 @@ router.get('/findOneDisbursement/:id', findOneDisbursement)
 router.post('/addDisbursement', addDisbursement)
 
 //@Endpoint http://localhost:3001/api/updateDisbursement
-//@method PUT
+//@method PATCH
 //@Access Publish
-router.put('/updateDisbursement', updateDisbursement)
+router.patch('/updateDisbursement', updateDisbursement)
 
 //@Endpoint http://localhost:3001/api/deleteDisbursement
 //@method DELETE

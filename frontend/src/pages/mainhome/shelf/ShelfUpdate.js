@@ -4,7 +4,7 @@ import { useState,useEffect } from 'react'
 import { findOneShelf, updateShelf } from '../../../functions/shelf';
 import Swal from 'sweetalert2';
 export default function ShelfUpdate() {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const {id} = useParams()
     const [shelf,setshelf] = useState({
         _id: "",

@@ -3,10 +3,9 @@ import React from 'react'
 export default function home() {
   return (
     <div>
-        <h1><span>
+        <h1>
           Home Page
-        </span>
-          </h1>
+        </h1>
     </div>
   )
 }

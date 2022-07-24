@@ -28,6 +28,20 @@ exports.readUsers = async(req, res, next) => {
     }
 }
 
+exports.findUserByName = async(req, res) => {
+    try{
+        const {username} = req.params
+        console.log(username)
+        const user = await User.findOne({username: username})
+        .select('-password')
+        .exec()
+        res.send(user)
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
 exports.updateUsers = async(req, res, next) => {
     try{
         console.log(req.body.value)
