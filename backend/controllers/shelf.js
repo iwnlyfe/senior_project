@@ -2,15 +2,15 @@ const Shelf = require('../models/shelf')
 
 exports.findAllShelf = async(req, res) => {
     try{
-        // const shelf = await Shelf.find({})
-        const shelf = await Shelf.aggregate([
-            {$lookup: {
-                from: 'zones',
-                localField: 'zone_id',
-                foreignField: '_id',
-                as: 'zone'
-            }}
-        ])
+        const shelf = await Shelf.find({})
+        // const shelf = await Shelf.aggregate([
+        //     {$lookup: {
+        //         from: 'zones',
+        //         localField: 'zone_id',
+        //         foreignField: '_id',
+        //         as: 'zone'
+        //     }}
+        // ])
         res.send(shelf)
     }catch(err){
         console.log(err)
@@ -37,10 +37,11 @@ exports.addShelf = async(req, res) => {
             return res.status(400).send('floor and lock already exist!')
         }
         shelf = new Shelf({
+            shelfNumber,
             floorNumber,
             lockNumber,
             shelfStatus,
-            zone_id
+            zone
         })
         await shelf.save();
         res.send('Add Shelf Success!')
@@ -54,17 +55,19 @@ exports.updateShelf = async(req, res) => {
     try{
         // req.body.value
         const {
-            _id, 
+            _id,
+            shelfNumber,
             floorNumber, 
             lockNumber, 
             shelfStatus, 
-            zone_id
+            zone
         } = req.body;
         var newShelf = {
+            shelfNumber,
             floorNumber, 
             lockNumber, 
             shelfStatus, 
-            zone_id
+            zone
         }
         await Shelf.updateOne(
             {_id: _id},

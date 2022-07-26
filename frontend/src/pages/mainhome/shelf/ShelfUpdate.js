@@ -8,10 +8,11 @@ export default function ShelfUpdate() {
     const {id} = useParams()
     const [shelf,setshelf] = useState({
         _id: "",
+        shrlfNumber: "",
         floorNumber: "",
         lockNumber: "",
         shelfStatus: "",
-        zone_id: ""
+        zone: ""
       })
     
     useEffect(() =>{
@@ -39,6 +40,13 @@ export default function ShelfUpdate() {
          updateShelf(shelf)
          .then(res =>{
             console.log(res.data)
+            Swal.fire({
+                icon: 'success',
+                title: "Shelf update Successful",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            navigate("/shelfview")
          }).catch(err =>{
             console.log(err.response)
          })
@@ -54,6 +62,12 @@ export default function ShelfUpdate() {
 
                              <div className='card-body '>
                                 {/* <input type="hidden" value={product._id} /> */}
+                                <div>
+                                <span> ShelfNumber </span>
+                                </div>
+                            <div>
+                               <input className='rounded-pill border-0 form-control' type='text' name='shelfNumber' value={shelf.shelfNumber} onChange={handleChange} required />
+                           </div>
                                 <div>
                                 <span> floorNumber </span>
                                 </div>
@@ -73,10 +87,10 @@ export default function ShelfUpdate() {
                                  <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' value={shelf.shelfStatus} onChange={handleChange} required />
                              </div>
                              <div>
-                                 <span> zone_id </span>
+                                 <span> zone </span>
                              </div>
                              <div>
-                                 <input className='rounded-pill border-0 form-control' type='text' name='zone_id' value={shelf.zone_id} onChange={handleChange} required />
+                                 <input className='rounded-pill border-0 form-control' type='text' name='zone' value={shelf.zone} onChange={handleChange} required />
                              </div>
                              <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                          </div>

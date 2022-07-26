@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { findOneDisbursement, updateDisbursement } from '../../../functions/disbursement'
 import { findAllProduct, findOneProduct, withdraw, disbursement } from '../../../functions/product'
 import Select from 'react-select'
+import Swal from 'sweetalert2';
 // import axios from 'axios'
 export default function DisbursementUpdate() {
     const {id} = useParams();
@@ -124,6 +125,12 @@ export default function DisbursementUpdate() {
                     })
                 }
             }
+            Swal.fire({
+                icon:"success",
+                title: "Disbursement update Successful",
+                showConfirmButton: false,
+                timer: 1200
+            });
             navigate('/disbursementview')
             console.log(res.data)
         }).catch(err => {

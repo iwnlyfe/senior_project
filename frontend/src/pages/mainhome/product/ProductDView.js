@@ -33,7 +33,7 @@ export default function ProductDView() {
                                 <h7 class="col-8 my-1">Quantity {product.quantity}</h7>
                                 <h7 class='text-right col-4 my-1'>{product.price} Baht/Unit</h7>
                                 <h7 class=" col-12">Product Status ปกติ</h7>
-                                <p className="col-12">_______________________________________________________________________________________</p>
+                                <p className="col-12">_______________________________________________________________________________</p>
                                 <h7 class="col-6">เบิกไปกี่ครัง 5 ครั้ง</h7>
                                 <h7 class="text-right col-6 my-1">คืนไปกี่ครั้ง 3 ครั้ง</h7>
                                 <h7 class="col-6 my-1">FloorNumber 1 to 10</h7>

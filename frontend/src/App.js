@@ -116,7 +116,7 @@ function App() {
             </UserRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/zoneview"
           element={
             <UserRoute>
@@ -131,7 +131,7 @@ function App() {
               <ZoneCreate />
             </UserRoute>
           }
-        />
+        /> */}
         <Route
           path="/updatezone/:id"
           element={

@@ -66,9 +66,9 @@ export default function ProductDetailUpdate() {
             }
             Swal.fire({
                 icon: 'success',
-                title: 'Successful edit product detail',
+                title: 'Edit product detail Successful',
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 1200,
                 
             })
         }).catch(err => {

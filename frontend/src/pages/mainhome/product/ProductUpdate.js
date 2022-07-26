@@ -39,6 +39,13 @@ export default function ProductUpdate() {
           updateProduct(product)
          .then(res =>{
             console.log(res.data)
+            Swal.fire({
+                icon:"success",
+                title: "Product update Successful",
+                showConfirmButton: false,
+                timer: 1200
+            });
+            navigate("/productview")
          }).catch(err =>{
             console.log(err.response)
          })

@@ -66,7 +66,7 @@ export default function ShelfView() {
     <div class='container-fluid'>
     <div class='row'>
       <Sidebar />
-      <div  class='ml col-s-10'>
+      <div  class='ml col-s-9'>
         <div class='row'>
           <h1 class='col-10 mt-3'>Shelfs View</h1>
           <a href='shelfcreate' class='btn btn-info py-0 my-4 btn-lg'>Create</a>
@@ -76,6 +76,7 @@ export default function ShelfView() {
             <thead>
               <tr>
                 <th scope='col'>#</th>
+                <th scope='col'>ShelfNumber</th>
                 <th scope='col'>FloorNumber</th>
                 <th scope='col'>LockNumber</th>
                 <th scope='col'>ShelfStatus</th>
@@ -87,6 +88,7 @@ export default function ShelfView() {
             <tbody key={index}>
               <tr>
                 <td scope="row">{index +1}</td>
+                <td>{shelf.shelfNumber}</td>
                 <td>{shelf.floorNumber}</td>
                 <td>{shelf.lockNumber}</td>
                 {/* <td>{shelf.shelfStatus}</td> */}
@@ -94,10 +96,10 @@ export default function ShelfView() {
                 ? <td>เต็ม</td>
                 : <td>ว่าง</td>
                 }
-                {/* <td>{shelf.zone_id}</td> */}
-                {shelf.zone.map((zone) => (
-                  <td>{zone.zonetype}</td>
-                ))}
+                <td>{shelf.zone}</td>
+                {/* {shelf.zone.map((zone) => (
+                  <td>{zone.zone}</td>
+                ))} */}
                 <td>
                 <Link to={'/shelfupdate/' + shelf._id } className='btn btn-outline-warning btn-sm mx-1'>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

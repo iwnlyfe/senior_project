@@ -24,7 +24,7 @@ export default function InMovement() {
     <div className="container-fluid">
       <div class="row">
         <Sidebar />
-        <div class="ml col-s-10">
+        <div class="ml col-s-9">
           <div class="row">
             <h1 className="col-3">ABC analysis</h1>
           </div>
