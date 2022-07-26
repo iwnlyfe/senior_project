@@ -14,7 +14,14 @@ exports.findAllUser = async(req, res, next) => {
 exports.register = async(req, res, next) => {
     try{
         // Check user
-        const { username, password } = req.body
+        const { username, 
+            password, 
+            firstname, 
+            surname, 
+            email, 
+            position, 
+            department 
+        } = req.body
         var user = await User.findOne({username})
         if(user){
             return res.status(400).send('User Already exists')
@@ -23,7 +30,12 @@ exports.register = async(req, res, next) => {
         const salt = await bcrypt.genSalt(10)
         user = new User({
             username,
-            password
+            password,
+            firstname, 
+            surname, 
+            email, 
+            position, 
+            department 
         });
 
         // Encrypt

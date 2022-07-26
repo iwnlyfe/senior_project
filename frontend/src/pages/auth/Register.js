@@ -2,13 +2,19 @@ import React, {useState} from 'react'
 // functions
 import { register } from '../../functions/auth'
 import Swal from 'sweetalert2'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Register() {
+  const navigate = useNavigate();
   const [value, setValue] = useState({
     username: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    firstname: "",
+    surname: "",
+    email: "",
+    position: "",
+    department: ""
   })
   const handleChange = (e) => {
     setValue({...value, 
@@ -34,6 +40,7 @@ export default function Register() {
           'success'
         )
         console.log(res.data)
+        navigate('/login')
         // alert(res.data)
       }).catch(err => {
         Swal.fire('แจ้งเตือน',
@@ -87,6 +94,36 @@ export default function Register() {
                                           <div class="form-group position-relative">
                                               <span class="zmdi zmdi-email"></span>
                                               <input type="password" name='confirmPassword' class="form-control" placeholder="confirm Password" onChange={handleChange} required/>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form-group position-relative">
+                                              <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='firstname' class="form-control" placeholder="firstname" onChange={handleChange} required/>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form-group position-relative">
+                                              <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='surname' class="form-control" placeholder="surname" onChange={handleChange} required/>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form-group position-relative">
+                                              <span class="zmdi zmdi-email"></span>
+                                              <input type="email" name='email' class="form-control" placeholder="email" onChange={handleChange} required/>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form-group position-relative">
+                                              <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='position' class="form-control" placeholder="position" onChange={handleChange} required/>
+                                          </div>
+                                      </div>
+                                      <div class="col-12">
+                                          <div class="form-group position-relative">
+                                              <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='department' class="form-control" placeholder="department" onChange={handleChange} required/>
                                           </div>
                                       </div>
                                       <div class="col-12 mt-30 ">

@@ -150,11 +150,11 @@ function App() {
           <DisbursementCreate />
         </UserRoute>
       }/>
-      <Route path='/disbursementupdate/:id' element={
+      {/* <Route path='/disbursementupdate/:id' element={
         <UserRoute>
           <DisbursementUpdate />
         </UserRoute>
-      }/>
+      }/> */}
         <Route path='/register' element={<Register />}/>
         <Route path='/login' element={<Login />}/>
         <Route path='/' element={<Login />} />
