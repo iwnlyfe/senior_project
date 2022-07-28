@@ -6,7 +6,7 @@ const ShelfSchema = new mongoose.Schema(
         floorNumber:{type: Number},
         lockNumber:{type: Number},
         shelfStatus:{type: Boolean},
-        zone_id:{type: String}
+        zone:{type: String}
     }
 )
 module.exports = shelf = mongoose.model('shelf', ShelfSchema)

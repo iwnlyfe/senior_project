@@ -31,10 +31,10 @@ exports.findOneShelf = async(req, res, next) => {
 
 exports.addShelf = async(req, res) => {
     try{
-        const {floorNumber, lockNumber, shelfStatus, zone_id} = req.body;
-        var shelf = await Shelf.findOne({floorNumber: floorNumber, lockNumber: lockNumber})
+        const {shelfNumber, floorNumber, lockNumber, shelfStatus, zone} = req.body;
+        var shelf = await Shelf.findOne({shelfNumber: shelfNumber, floorNumber: floorNumber, lockNumber: lockNumber})
         if(shelf){
-            return res.status(400).send('floor and lock already exist!')
+            return res.status(400).send('shelf and floor and lock already exist!')
         }
         shelf = new Shelf({
             shelfNumber,

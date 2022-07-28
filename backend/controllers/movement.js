@@ -58,7 +58,7 @@ exports.outMovement = async(req, res) =>{
                 // productDetail[i].totalQuantity = productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity
                 momenttotal[i] = productDetail[i].totalQuantity + disbursementPlus[j].totalQuantity
                 break;
-            }
+            }   
         }
     }
     console.log(momenttotal)

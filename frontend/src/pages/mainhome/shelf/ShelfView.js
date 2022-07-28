@@ -48,7 +48,7 @@ export default function ShelfView() {
       // console.log(response.data)
       })
       .catch(err=>{
-        console.log(err.prsponse.data)
+        console.log(err.response)
       });
   }
 
@@ -59,7 +59,7 @@ export default function ShelfView() {
       console.log(response.data[0].zone[0].zonetype)
       })
       .catch(err=>{
-        console.log(err.prsponse.data)
+        console.log(err.response)
       });
   },[])
   return (
@@ -80,7 +80,7 @@ export default function ShelfView() {
                 <th scope='col'>FloorNumber</th>
                 <th scope='col'>LockNumber</th>
                 <th scope='col'>ShelfStatus</th>
-                <th scope='col'>Zonetype</th>
+                <th scope='col'>Zone</th>
                 <th scope='col'>Action</th>
               </tr>
             </thead>
@@ -93,7 +93,7 @@ export default function ShelfView() {
                 <td>{shelf.lockNumber}</td>
                 {/* <td>{shelf.shelfStatus}</td> */}
                 {shelf.shelfStatus == true
-                ? <td>เต็ม</td>
+                ? <td>ไม่ว่าง</td>
                 : <td>ว่าง</td>
                 }
                 <td>{shelf.zone}</td>

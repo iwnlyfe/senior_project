@@ -7,10 +7,11 @@ import { useNavigate } from 'react-router-dom'
 export default function ShelfCreate() {
     const navigate = useNavigate();
     const [value, setValue] = useState({
+        shrlfNumber: "",
         floorNumber: "",
         lockNumber: "",
         shelfStatus: "",
-        zone_id: ""
+        zone: ""
       })
     
     const handleChange = (e) => {
@@ -46,28 +47,34 @@ export default function ShelfCreate() {
                     <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                         <div className='card-body '>
                             <div>
+                                <span> shelfNumber </span>
+                            </div>
+                            <div>
+                                <input className='rounded-pill border-0 form-control' type='text' name='shelfNumber' placeholder='Please number the shelf.' onChange={handleChange} required />
+                            </div>
+                            <div>
                                 <span> floorNumber </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='floorNumber' placeholder='Please name the product.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='floorNumber' placeholder='Please number the floor.' onChange={handleChange} required />
                             </div>
                             <div>
                                 <span> lockNumber </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='lockNumber' placeholder='Please number the quantity.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='lockNumber' placeholder='Please number the lock.' onChange={handleChange} required />
                             </div>
                             <div>
                                 <span> shelfStatus </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' placeholder='Please number the price.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='shelfStatus' placeholder='Please the Statusshelf.' onChange={handleChange} required />
                             </div>
                             <div>
-                                <span> zone_id </span>
+                                <span> zone </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-0 form-control' type='text' name='zone_id' placeholder='Please the group.' onChange={handleChange} required />
+                                <input className='rounded-pill border-0 form-control' type='text' name='zone' placeholder='Please the group.' onChange={handleChange} required />
                             </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>
