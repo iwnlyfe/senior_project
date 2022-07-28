@@ -31,15 +31,15 @@ export default function InMovement() {
           <table class="table table-bordered table-light">
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th scope="col">PeoductName</th>
                 <th scope="col">Movement</th>
                 <th scope="col">%</th>
                 <th scope="col">group</th>
               </tr>
             </thead>
-            {movement.map((movement, index) => (
+            {movement.map((movement) => (
               <tbody>
-                <th scope="col">{movement._id}</th>
+                <th scope="col">{movement.Name}</th>
                 <th scope="col">{movement.movement}</th>
                 <th scope="col">{movement.totalQuantity}</th>
                 <th scope="col">{movement.group}</th>

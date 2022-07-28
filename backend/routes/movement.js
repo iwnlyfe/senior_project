@@ -8,6 +8,6 @@ const { outMovement } = require('../controllers/movement')
 //@Access Publish
 router.get('/outMovement', outMovement)
 
-// router.get('/outMovementMinus', outMovementMinus)
+
 
 module.exports = router
