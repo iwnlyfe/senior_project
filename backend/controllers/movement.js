@@ -109,7 +109,7 @@ exports.outMovement = async(req, res) =>{
     for (let index = 0; index < productDetail.length; index++) {
         for(let i=0 ; i<productDetail2.length ; i++){
             if(JSON.stringify(productDetail[index]._id) == JSON.stringify(productDetail2[i].product_id)){
-                console.log("...................")
+                // console.log("...................")
                 if(scoreA >= 0 && scoreA){
                     scoreA = scoreA - productDetail[index].totalQuantity
                     productABC.push({_id: productDetail[index]._id , Name: productDetail2[i].product[0].productName , movement: momenttotal[index] , totalQuantity: productDetail[index].totalQuantity , group: "A"})
