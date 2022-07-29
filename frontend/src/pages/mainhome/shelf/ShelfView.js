@@ -24,7 +24,7 @@ export default function ShelfView() {
           .then(res => {
               Swal.fire(
                   'Deleted!',
-                  'Account has been deleted.',
+                  'Shelf has been deleted.',
                   'success'
               )
               loadData()

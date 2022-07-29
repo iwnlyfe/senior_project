@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState, useCallback } from "react";
-import { outMovement } from "../../../functions/movement";
+import { outMovement , addGroupABC } from "../../../functions/movement";
 import Sidebar from "../../../components/layout/Sidebar";
 // import { Link } from 'react-router-dom'
 // import moment from 'moment'
@@ -20,13 +20,22 @@ export default function InMovement() {
       });
   }, []);
 
+  const addGroup = () =>{
+    (movement.map((movement) => {
+      console.log(movement._id)
+      console.log(movement.group)
+      addGroupABC(movement._id , movement.group)
+    }))
+  }
+
   return (
     <div className="container-fluid">
       <div class="row">
         <Sidebar />
         <div class="ml col-s-9">
           <div class="row">
-            <h1 className="col-3">ABC analysis</h1>
+            <h1 className="col-9">ABC analysis</h1>
+            <button className="btn btn-info py-0 my-4 btn-lg" onClick={addGroup}> Add Group ABC </button>
           </div>
           <table class="table table-bordered table-light">
             <thead>
@@ -50,8 +59,11 @@ export default function InMovement() {
                 <th scope='col'>{movement.totalQuantity}</th>
             </tbody> */}
           </table>
+          
         </div>
+        
       </div>
+      
     </div>
   );
 }

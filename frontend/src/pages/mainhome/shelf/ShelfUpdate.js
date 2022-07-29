@@ -42,7 +42,7 @@ export default function ShelfUpdate() {
             console.log(res.data)
             Swal.fire({
                 icon: 'success',
-                title: "Shelf update Successful",
+                title: "Edit Successful",
                 showConfirmButton: false,
                 timer: 1200
             });
