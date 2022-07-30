@@ -1,5 +1,6 @@
 const ProductDetail = require('../models/productDetail')
 const Disbursement = require('../models/disbursement')
+const Product = require('../models/product')
 
 exports.outMovement = async(req, res) =>{
     try{
@@ -61,6 +62,7 @@ exports.outMovement = async(req, res) =>{
                     }
             }
         }
+
     // ผลจากการลบของ = เบิกจ่าย - เบิกคืน
     // console.log("Disbursement ",disbursementPlus)
     var productABC = []
@@ -129,12 +131,26 @@ exports.outMovement = async(req, res) =>{
         }
     }
     // console.log(JSON.stringify(productABC[0]._id))
-    // console.log(productABC)
+    console.log(productABC)
     // for (let index = 0; index < productDetail2.length; index++) {
     //         console.log()
     // }
     res.send(productABC)
     
+    }catch(err){
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}
+
+exports.addGroupABC = async(req, res) => {
+    try{
+        const {id, group} = req.body
+        await Product.updateOne(
+            {_id: id},
+            {group: group}
+        )
+        res.send('Success!!')
     }catch(err){
         console.log(err)
         res.status(500).send('Server Error!')
