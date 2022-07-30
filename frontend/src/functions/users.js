@@ -30,6 +30,15 @@ export const changeRole = async(authtoken, value) => {
     });
 }
 
+export const changePosition = async(authtoken, value) => {
+    return await axios.post(process.env.REACT_APP_API + '/change-position',
+    value, {
+        headers:{
+            authtoken,
+        }
+    });
+}
+
 
 export const resetPassword = async(authtoken, id, value) => {
     // console.log(authtoken)

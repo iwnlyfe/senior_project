@@ -1,11 +1,18 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 // functions
-import { register } from '../../functions/auth'
+import { register } from '../../functions/auth';
+import { findAllPosition } from '../../functions/position';
+import { findAllDepartment } from '../../functions/department';
+
+//library
 import Swal from 'sweetalert2'
 import { Link, useNavigate } from 'react-router-dom'
+import Select from 'react-select'
 
 export default function Register() {
   const navigate = useNavigate();
+  const [positionOption, setPositionOption] = useState('')
+  const [departmentOption, setDepartmentOption] = useState('')
   const [value, setValue] = useState({
     username: "",
     password: "",
@@ -16,15 +23,28 @@ export default function Register() {
     position: "",
     department: ""
   })
+  
+
   const handleChange = (e) => {
     setValue({...value, 
       [e.target.name]: e.target.value
     })
   }
 
+  const handleChangePosition = (e) => {
+    setValue({...value,
+      position: e.label
+    })
+  }
+
+  const handleChangeDepartment = (e) => {
+    setValue({...value,
+      department: e.label
+    })
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    // console.log(value)
+    console.log(value)
     if (value.password !== value.confirmPassword){
       Swal.fire({
         icon: 'error',
@@ -52,7 +72,41 @@ export default function Register() {
     }
   }
 
-  // console.log(value)
+  useEffect(() => {
+    findPosition()
+    findDepartment()
+  }, [])
+
+  const findPosition = () => {
+    findAllPosition()
+    .then(res => {
+      console.log(res.data)
+      const data = res.data
+      const option = data.map(data => ({
+        "value": data._id,
+        "label": data.positionName
+      }))
+      setPositionOption(option)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  const findDepartment = () => {
+    findAllDepartment()
+    .then(res => {
+      console.log(res.data)
+      const data = res.data
+      const option = data.map(data => ({
+        "value": data._id,
+        "label": data.departmentName
+      }))
+      setDepartmentOption(option)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
     
     // <div>
@@ -116,14 +170,16 @@ export default function Register() {
                                       </div>
                                       <div class="col-12">
                                           <div class="form-group position-relative">
-                                              <span class="zmdi zmdi-email"></span>
-                                              <input type="text" name='position' class="form-control" placeholder="position" onChange={handleChange} required/>
+                                              {/* <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='position' class="form-control" placeholder="position" onChange={handleChange} required/> */}
+                                              <Select options={positionOption} onChange={handleChangePosition} placeholder='Select Postion...'/>
                                           </div>
                                       </div>
-                                      <div class="col-12">
+                                      <div class="col-12" >
                                           <div class="form-group position-relative">
-                                              <span class="zmdi zmdi-email"></span>
-                                              <input type="text" name='department' class="form-control" placeholder="department" onChange={handleChange} required/>
+                                              {/* <span class="zmdi zmdi-email"></span>
+                                              <input type="text" name='department' class="form-control" placeholder="department" onChange={handleChange} required/> */}
+                                              <Select options={departmentOption} onChange={handleChangeDepartment} placeholder='Select Department...'/>
                                           </div>
                                       </div>
                                       <div class="col-12 mt-30 ">

@@ -20,6 +20,7 @@ export default function Header() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { user } = useSelector((state) => ({...state}))
+    // console.log(user)
     const logout = () => {
         Swal.fire({
             position: 'top-center',
@@ -38,9 +39,22 @@ export default function Header() {
         <div class='container-fluid'>
             {/* <div class='fixed-top'> */}
         <Menu mode="horizontal" >
-            <Menu.Item key="mail" icon={<HomeOutlined />}>
-                <Link to="/">Home</Link>
-            </Menu.Item>
+            {!user && <>
+                <Menu.Item key="mail" icon={<HomeOutlined />}>
+                    <Link to="/">Home</Link>
+                </Menu.Item>
+            </>}
+
+            {user && <>
+                <Menu.Item key="mail" icon={<HomeOutlined />}>
+                    {user.position === 'Warehouse Supervisor'
+                    ? <Link to='/admin/index'>Home</Link>
+                    : <Link to='/user/index'>Home</Link>
+                    }
+                    {/* <Link to="/">Home</Link> */}
+                </Menu.Item>
+            </>}
+            
 
             {!user && <>
                 <Menu.Item key="mail" style={{marginLeft: 'auto' }} icon={<LoginOutlined />}>
