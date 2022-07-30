@@ -20,7 +20,7 @@ router.get('/findOneProduct/:id', findOneProduct)
 router.post('/addProduct', addProduct)
 
 //@Endpoint http://localhost:3001/api/updateProduct
-//@method put
+//@method PUT
 //@Access Publish
 router.put('/updateProduct', updateProduct)
 

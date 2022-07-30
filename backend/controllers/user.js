@@ -109,3 +109,14 @@ exports.changeRole = async(req, res, next)=>{
         res.status(500).send('Server Error!')
     }
 }
+
+exports.changePosition = async(req, res, next) => {
+    try{
+        const {id, position} = req.body
+        const user = await User.findOneAndUpdate({_id: id}, {position: position});
+        res.send('Success')
+    }catch(err) {
+        console.log(err)
+        res.status(500).send('Server Error!')
+    }
+}

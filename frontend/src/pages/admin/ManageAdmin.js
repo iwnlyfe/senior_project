@@ -9,6 +9,7 @@ import moment from 'moment/min/moment-with-locales';
 import { listUser, 
     changeStatus, 
     changeRole,
+    changePosition,
     deleteUser,
     resetPassword
 } from '../../functions/users';
@@ -68,7 +69,7 @@ export default function ManagaAdmin() {
     const loadData = (authtoken) => {
         listUser(authtoken)
         .then(res => {
-            // console.log(res.data)
+            console.log(res.data)
             setData(res.data)
 
         }).catch(err => {
@@ -76,29 +77,44 @@ export default function ManagaAdmin() {
         })
     }
 
-    const handleChangeStatus = (e, _id) => {
-        const value = {
-            id: _id,
-            enabled: e
-        }
-        changeStatus(user.token, value)
-        .then(res => {
-            console.log(res)
-            loadData(user.token)
-        }).catch(err => {
-            console.log(err.response)
-        })
-    }
+    // const handleChangeStatus = (e, _id) => {
+    //     const value = {
+    //         id: _id,
+    //         enabled: e
+    //     }
+    //     changeStatus(user.token, value)
+    //     .then(res => {
+    //         console.log(res)
+    //         loadData(user.token)
+    //     }).catch(err => {
+    //         console.log(err.response)
+    //     })
+    // }
 
     const roleData = ['admin', 'user']
+    const positionData = ['Warehouse Supervisor', 'Warehouse Staff']
 
-    const handleChangeRole = (e, _id) => {
+    // const handleChangeRole = (e, _id) => {
+    //     const value = {
+    //         id: _id,
+    //         role: e
+    //     }
+    //     console.log(value)
+    //     changeRole(user.token, value)
+    //     .then(res => {
+    //         console.log(res.data)
+    //         loadData(user.token)
+    //     }).catch(err => {
+    //         console.log(err.response)
+    //     })
+    // }
+
+    const handleChangePosition = (e, _id) => {
         const value = {
             id: _id,
-            role: e
+            position: e
         }
-        console.log(value)
-        changeRole(user.token, value)
+        changePosition(user.token, value)
         .then(res => {
             console.log(res.data)
             loadData(user.token)
@@ -160,13 +176,13 @@ export default function ManagaAdmin() {
                 <MenuBarAdmin />
             </div>
             <div className='col'>
-                <h1>ManagaAdmin Page</h1>
+                <h1>Managa Warehouse Supervisor Page</h1>
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">username</th>
-                            <th scope="col">role</th>
+                            <th scope="col">position</th>
                             {/* <th scope="col">status</th> */}
                             <th scope="col">created</th>
                             <th scope="col">updated</th>
@@ -179,20 +195,32 @@ export default function ManagaAdmin() {
                             <th scope="row">{index +1}</th>
                             <td>{item.username}</td>
                             <td>
-                                <Select
+                                {/* <Select
                                 style={{width:'100%'}}
                                 value={item.role}
                                 onChange={(e) => handleChangeRole(e, item._id)}
                                 >
+                                
                                     {roleData.map((role, index) => (
                                         <Select.Option value={role} key={index}>
                                         {role == 'admin' 
                                         ? <Tag color="green">{role}</Tag>
                                         : <Tag color='red'>{role}</Tag>
                                         }
-                                    </Select.Option>
+                                </Select> */}
+                                <Select
+                                style={{width:'55%'}}
+                                value={item.position}
+                                onChange={(e) => handleChangePosition(e, item._id)}
+                                >
+                                    {positionData.map((position, index) => (
+                                        <Select.Option value={position} key={index}>
+                                            {position === 'Warehouse Supervisor'
+                                            ? <Tag color={"green"}>{position}</Tag>
+                                            : <Tag color={"red"}>{position}</Tag>
+                                            }
+                                        </Select.Option>
                                     ))}
-                                    
                                 </Select>
                             </td>
                             {/* <td>

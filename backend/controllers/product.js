@@ -89,7 +89,7 @@ exports.disbursement = async(req, res) => {
             {_id: id},
             {quantity: newQuantity}
         )
-        res.send('Disbursement Success!!')
+        res.send('Withdraw Success!')
     }catch(err){
         console.log(err)
         res.status(500).send('Server Error!')
@@ -107,7 +107,7 @@ exports.withdraw = async(req, res) => {
             {_id: id},
             {quantity: newQuantity}
         )
-        res.send('withdraw Success!!')
+        res.send('Return Success!')
     }catch(err){
         console.log(err)
         res.status(500).send('Server Error!')

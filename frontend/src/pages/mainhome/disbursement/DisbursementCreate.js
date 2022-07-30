@@ -15,6 +15,8 @@ export default function DisbursementCreate() {
     const navigate = useNavigate();
     const [user_id, setUser_id] = useState('')
     const [product, setProduct] = useState([])
+    const [allQuantityOfProduct, setAllQuantityOfProduct] = useState([])
+    const [productOption, setProductOption] = useState([])
     const [product_id, setProduct_id] = useState('')
 
     const [data, setData] = useState({
@@ -34,6 +36,19 @@ export default function DisbursementCreate() {
     const handleChangeProduct = (e) => {
         setProduct_id(e.value)
         console.log(e.label)
+        checkQuantity(e.value)
+    }
+
+    const checkQuantity = (id) => {
+        console.log(id)
+        const len = product.length;
+        for(let i = 0; i < len; i++){
+            if(product[i]._id == id){
+                setAllQuantityOfProduct(product[i].quantity)
+                // console.log(product[i].quantity)
+            }
+        }
+
     }
 
     const handleChangeState = (e) => {
@@ -52,35 +67,60 @@ export default function DisbursementCreate() {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if (product_id == ''){
-            alert('Please Select product')
+            // alert('Please Select product')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Select product',
+              })
         }else{
-            await axios.post(process.env.REACT_APP_API + '/addDisbursement',{
-                user_id: user_id,
-                product_id: product_id,
-                quantity: data.quantity,
-                date: data.date,
-                state: data.state
-            }).then(async(res) => {
-                if(data.state == true){
-                    disbursement(product_id, data.quantity)
-                    .then(res => {
-                        console.log(res)
-                    }).catch(err => {
-                        console.log(err.response)
-                    })
-                }else{
-                    withdraw(product_id, data.quantity)
-                    .then(res => {
-                        console.log(res)
-                    }).catch(err => {
-                        console.log(err.response)
-                    })
-                }
-            }).catch(err => {
-                console.log(err)
-            })
+            if(allQuantityOfProduct < data.quantity && data.state == true){
+                // alert('Withdraw amount is greater than the quantity in stock.')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Withdraw amount is greater than the quantity in stock.',
+                  })
+            }else{
+                await axios.post(process.env.REACT_APP_API + '/addDisbursement',{
+                    user_id: user_id,
+                    product_id: product_id,
+                    quantity: data.quantity,
+                    date: data.date,
+                    state: data.state
+                }).then(async(res) => {
+                    if(data.state == true){
+                        disbursement(product_id, data.quantity)
+                        .then(res => {
+                            console.log(res)
+                            Swal.fire({
+                                icon: 'success',
+                                // title: 'Your work has been saved',
+                                title: res.data
+                              })
+                        }).catch(err => {
+                            console.log(err.response)
+                        })
+                    }else{
+                        withdraw(product_id, data.quantity)
+                        .then(res => {
+                            console.log(res)
+                            Swal.fire({
+                                icon: 'success',
+                                // title: 'Your work has been saved',
+                                title: res.data
+                              })
+                        }).catch(err => {
+                            console.log(err.response)
+                        })
+                    }
+                    navigate('/disbursementview')
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
         }
-        navigate('/disbursementview')
+        
     }
 
     useEffect(() => {
@@ -92,11 +132,13 @@ export default function DisbursementCreate() {
         await findAllProduct()
         .then(res => {
             const data = res.data
+            setProduct(data)
+            console.log(res.data)
             const productOption = data.map(product => ({
                 "value": product._id,
                 "label": product.productName
             }))
-            setProduct(productOption)
+            setProductOption(productOption)
         }).catch(err => {
             console.log(err.response)
         })
@@ -123,7 +165,7 @@ export default function DisbursementCreate() {
                                 <span> Username </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='price' value={user.username} placeholder='Please enter the username.'/>
+                                <input className='rounded-pill border-1 form-control' type='text' name='price' value={user.username} placeholder='Please enter the username.' required/>
                             </div>
                             {/* <Select options={username} onChange={handleChangeUsername} /> */}
                             <div className='marginDiv'>
@@ -132,12 +174,12 @@ export default function DisbursementCreate() {
                             {/* <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please the group.'/>
                             </div> */}
-                            <Select options={product} onChange={handleChangeProduct} />
+                            <Select options={productOption} onChange={handleChangeProduct} />
                             <div className='marginDiv'>
                                 <span> Quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please enter the Quantity.' onChange={handleChange}/>
+                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please enter the Quantity.' onChange={handleChange} required/>
                             </div>
                             <div className='marginDiv'>
                                 <span> State </span>
@@ -145,7 +187,7 @@ export default function DisbursementCreate() {
                             {/* <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.'/>
                             </div> */}
-                            <select name='state' onChange={handleChangeState} >
+                            <select name='state' onChange={handleChangeState} required>
                                 <option>เบิกจ่าย</option>
                                 <option>เบิกคืน</option>
                             </select>

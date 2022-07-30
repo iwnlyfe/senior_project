@@ -8,7 +8,8 @@ const {listUsers,
     deleteUser,
     changeStatus,
     changeRole,
-    findUserByName
+    findUserByName,
+    changePosition
 } = require('../controllers/user')
 
 // middleware
@@ -48,5 +49,10 @@ router.post('/change-status',auth, authAdmin, changeStatus)
 //@method POST
 //@Access Private
 router.post('/change-role',auth, authAdmin, changeRole)
+
+//@Endpoint http://localhost:3001/api/change-position
+//@method POST
+//@Access Private
+router.post('/change-position',auth, authAdmin, changePosition)
 
 module.exports = router

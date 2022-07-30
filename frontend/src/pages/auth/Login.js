@@ -20,14 +20,21 @@ export default function Login() {
     });
     const [loading, setLoading] = useState(false);
     
-    const roleBaseRedirect = (role) => {
-      if(role === 'admin'){
-        navigate('/admin/index')
-      }else {
-        navigate('/user/index')
-        
-      }
-    };
+    // const roleBaseRedirect = (role) => {
+    //   if(role === 'admin'){
+    //     navigate('/admin/index')
+    //   }else {
+    //     navigate('/user/index')
+    //   }
+    // };
+
+    const positionBaseRedirect = (position) => {
+        if(position === 'Warehouse Supervisor'){
+            navigate('/admin/index')
+          }else {
+            navigate('/user/index')
+          }
+    }
 
     const handleChange = (e) => {
         setValue({...value, 
@@ -55,11 +62,13 @@ export default function Login() {
                 payload: {
                     token: res.data.token,
                     username: res.data.payload.user.username,
-                    role: res.data.payload.user.role
+                    // role: res.data.payload.user.role
+                    position: res.data.payload.user.position
                 }
             });
                 localStorage.setItem('token', res.data.token)
-                roleBaseRedirect(res.data.payload.user.role)
+                // roleBaseRedirect(res.data.payload.user.role)
+                positionBaseRedirect(res.data.payload.user.position)
             }).catch(err => {
                 // console.log(err.response)
                 // alert(err.response.data)
