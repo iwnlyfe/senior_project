@@ -12,7 +12,6 @@ export default function ProductDetailUpdate() {
     const [defaultQuantity, setDefaultQuantity] = useState('')
     const [productDetail,setProductDetail] = useState({
         _id: "",
-        productStatus: "",
         receiveDate: "",
         expireDate: "",
         receiveQuantity: "",
@@ -66,9 +65,10 @@ export default function ProductDetailUpdate() {
             }
             Swal.fire({
                 icon: 'success',
-                title: 'Successful edit product detail',
-                showConfirmButton: false,
-                timer: 1500,
+                // title: 'Successful edit product detail',
+                title: 'Edit Success'
+                // showConfirmButton: false,
+                // timer: 1500,
                 
             })
         }).catch(err => {
@@ -85,12 +85,12 @@ export default function ProductDetailUpdate() {
                         <div className='card caed-ui shadow-lg p-3 mb-4 bg-body rounded'>
                             <div className='card-body fontDivCreate'>
                                 {/* <input type="hidden" value={product._id} /> */}
-                                <div className='marginDiv'>
+                                {/* <div className='marginDiv'>
                                     <span> Product Status </span>
                                 </div>
                                 <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='productStatus' value={productDetail.productStatus} onChange={handleChange} required />
-                                </div>
+                                    <input className='rounded-pill border-1 form-control' type='text' name='productStatus' value={productDetail.productStatus} onChange={handleChange} required />
+                                </div> */}
                                 {/* <div className='marginDiv'>
                                     <span> Receive date </span>
                                 </div>

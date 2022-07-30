@@ -45,6 +45,11 @@ export default function ProductCreate() {
             submitProductDetail(_id)
         }).catch(err => {
             console.log(err.response)
+            Swal.fire(
+                'แจ้งเตือน',
+                err.response.data,
+                'error'
+            )
         })
         // await addProduct(product)
         // .then( async(res) => {
@@ -90,7 +95,7 @@ export default function ProductCreate() {
                                 <span> Product </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='productName' placeholder='Please. Enter product name.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='productName' placeholder='Please. Enter product name.' onChange={handleChangeProduct} required/>
                             </div>
                             {/* <div style={{marginBottom: "0.3rem"}}>
                                 <span> Quantity </span>
@@ -102,25 +107,25 @@ export default function ProductCreate() {
                                 <span> Price per unit </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='price' placeholder='Please. Enter price per unit.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='price' placeholder='Please. Enter price per unit.' onChange={handleChangeProduct} required/>
                             </div>
                             <div className='marginDiv'>
                                 <span> Group </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please. Enter the group.' onChange={handleChangeProduct}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='group' placeholder='Please. Enter the group.' onChange={handleChangeProduct} required/>
                             </div>
                             <div className='marginDiv'>
                                 <span> Receive quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please. Enter receiveQuantity.' onChange={handleChangeProductDetail}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please. Enter receiveQuantity.' onChange={handleChangeProductDetail} required/>
                             </div>
                             <div className='marginDiv'>
                                 <span> Expire date </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please. Enter the expireDate.' onChange={handleChangeProductDetail}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please. Enter the expireDate.' onChange={handleChangeProductDetail} required/>
                             </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>

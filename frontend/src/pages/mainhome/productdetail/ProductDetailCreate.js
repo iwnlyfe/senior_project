@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import './style.css'
 import { addProductDetail } from '../../../functions/productdetail'
-import { withdraw } from '../../../functions/product';
+import { findAllProduct, withdraw } from '../../../functions/product';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
-import { findAllProduct } from '../../../functions/product';
 import Select from 'react-select'
 import axios from 'axios';
 import moment from 'moment';
@@ -32,30 +31,39 @@ export default function ProductDetailCreate() {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        console.log(product)
-        console.log(product_id)
-        await axios.post(process.env.REACT_APP_API + '/addProductDetail', {
-            // productStatus: value.productStatus,
-            receiveDate: value.receiveDate,
-            expireDate: value.expireDate,
-            receiveQuantity: value.receiveQuantity,
-            product_id: product_id
-        }).then(async(res) => {
-            await withdraw(product_id, value.receiveQuantity)
-            .then(res => {
-                Swal.fire(
-                    product.label,
-                    'Successful product detail creation',
-                    'success',
-                    navigate('/productdetailview')    
-                )
-                console.log(res.data)
+        if (product_id == ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Select product',
+              })
+        }else{
+            console.log(product_id)
+            await axios.post(process.env.REACT_APP_API + '/addProductDetail', {
+                // productStatus: value.productStatus,
+                receiveDate: value.receiveDate,
+                expireDate: value.expireDate,
+                receiveQuantity: value.receiveQuantity,
+                product_id: product_id
+            }).then(async(res) => {
+                await withdraw(product_id, value.receiveQuantity)
+                .then(res => {
+                    Swal.fire(
+                        product.label,
+                        'Successful product detail creation',
+                        'success',
+                        navigate('/productdetailview')    
+                    )
+                    console.log(res.data)
+                }).catch(err => {
+                    console.log(err.response)
+                })
             }).catch(err => {
                 console.log(err.response)
             })
-        }).catch(err => {
-            console.log(err.response)
-        })
+        }  
+        // console.log(product)
+        
     }
 
     useEffect(() => {
@@ -85,7 +93,7 @@ export default function ProductDetailCreate() {
                             {/* <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='product_id' placeholder='Please number the product_id.' onChange={handleChange} required />
                             </div> */}
-                            <Select options={product} onChange={handleChangeProduct}/>
+                            <Select options={product} onChange={handleChangeProduct} required/>
                             {/* <div className='marginDiv'>
                                 <span> Product Status </span>
                             </div>
@@ -96,13 +104,13 @@ export default function ProductDetailCreate() {
                                 <span> Receive Quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChange}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='receiveQuantity' placeholder='Please number the receiveQuantity.' onChange={handleChange} required/>
                             </div>
                             <div className='marginDiv' style={{marginTop:"3px"}}>
                                 <span> Expire date </span>
                             </div>
                             <div className='marginDiv'>
-                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.' onChange={handleChange}  />
+                                <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.' onChange={handleChange} required/>
                             </div>
                             <button type='submit' className='btn btn-lg btn-custom btn-dark btn-block efbutton col-4 container mt-3'> Submit </button>
                         </div>

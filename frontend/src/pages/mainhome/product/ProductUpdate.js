@@ -22,7 +22,7 @@ export default function ProductUpdate() {
            
             //  console.log(data)
         }).catch(err => {
-            console.log(err.prsponse.data)
+            console.log(err.response.data)
         })
     }, [])
 
@@ -39,8 +39,21 @@ export default function ProductUpdate() {
           updateProduct(product)
          .then(res =>{
             console.log(res.data)
+            Swal.fire(
+                // 'Product Name: ' + product.productName,
+                // res.data,
+                '',
+                'Edit Success',
+                'success',
+                navigate('/productview')    
+            )
          }).catch(err =>{
             console.log(err.response)
+            Swal.fire(
+                'แจ้งเตือน',
+                err.response.data,
+                'error'
+            )
          })
 
      }

@@ -1,8 +1,7 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
-import {findAllProduct} from '../../../functions/product'
+import {findAllProduct, deleteProduct} from '../../../functions/product'
 import Sidebar from '../../../components/layout/Sidebar'
-import { deleteProduct } from '../../../functions/product'
 import { Link } from 'react-router-dom'
 import './style.css'
 
@@ -33,7 +32,7 @@ export default function ProductView() {
             .then(res => {
                 Swal.fire(
                     'Deleted!',
-                    'Account has been deleted.',
+                    'Product has been deleted.',
                     'success'
                 )
                 loadData()

@@ -26,7 +26,7 @@ export default function ProductDetailView() {
           .then(res => {
               Swal.fire(
                   'Deleted!',
-                  'Account has been deleted.',
+                  'Product Detail has been deleted.',
                   'success'
               )
               disbursement(productID, receiveQuantity)

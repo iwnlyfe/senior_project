@@ -67,10 +67,20 @@ export default function DisbursementCreate() {
     const handleSubmit = async(e) => {
         e.preventDefault()
         if (product_id == ''){
-            alert('Please Select product')
+            // alert('Please Select product')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Select product',
+              })
         }else{
-            if(allQuantityOfProduct <= data.quantity && data.state == true){
-                alert('The draw amount is greater than the amount with or equal to the amount that has.')
+            if(allQuantityOfProduct < data.quantity && data.state == true){
+                // alert('Withdraw amount is greater than the quantity in stock.')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Withdraw amount is greater than the quantity in stock.',
+                  })
             }else{
                 await axios.post(process.env.REACT_APP_API + '/addDisbursement',{
                     user_id: user_id,
@@ -83,6 +93,11 @@ export default function DisbursementCreate() {
                         disbursement(product_id, data.quantity)
                         .then(res => {
                             console.log(res)
+                            Swal.fire({
+                                icon: 'success',
+                                // title: 'Your work has been saved',
+                                title: res.data
+                              })
                         }).catch(err => {
                             console.log(err.response)
                         })
@@ -90,6 +105,11 @@ export default function DisbursementCreate() {
                         withdraw(product_id, data.quantity)
                         .then(res => {
                             console.log(res)
+                            Swal.fire({
+                                icon: 'success',
+                                // title: 'Your work has been saved',
+                                title: res.data
+                              })
                         }).catch(err => {
                             console.log(err.response)
                         })
@@ -145,7 +165,7 @@ export default function DisbursementCreate() {
                                 <span> Username </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='price' value={user.username} placeholder='Please enter the username.'/>
+                                <input className='rounded-pill border-1 form-control' type='text' name='price' value={user.username} placeholder='Please enter the username.' required/>
                             </div>
                             {/* <Select options={username} onChange={handleChangeUsername} /> */}
                             <div className='marginDiv'>
@@ -159,7 +179,7 @@ export default function DisbursementCreate() {
                                 <span> Quantity </span>
                             </div>
                             <div>
-                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please enter the Quantity.' onChange={handleChange}/>
+                                <input className='rounded-pill border-1 form-control' type='text' name='quantity' placeholder='Please enter the Quantity.' onChange={handleChange} required/>
                             </div>
                             <div className='marginDiv'>
                                 <span> State </span>
@@ -167,7 +187,7 @@ export default function DisbursementCreate() {
                             {/* <div>
                                 <input className='rounded-pill border-1 form-control' type='text' name='expireDate' placeholder='Please date the expireDate.'/>
                             </div> */}
-                            <select name='state' onChange={handleChangeState} >
+                            <select name='state' onChange={handleChangeState} required>
                                 <option>เบิกจ่าย</option>
                                 <option>เบิกคืน</option>
                             </select>
