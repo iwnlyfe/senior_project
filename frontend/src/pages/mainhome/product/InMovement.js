@@ -21,11 +21,15 @@ export default function InMovement() {
   }, []);
 
   const addGroup = () =>{
-    (movement.map((movement) => {
-      console.log(movement._id)
-      console.log(movement.group)
-      addGroupABC(movement._id , movement.group)
-    }))
+    for(let i=0; i<movement.length ; i++){
+      // console.log("first")
+      addGroupABC(movement[i]._id , movement[i].group)
+      .then(res => {
+        console.log(res)
+      }).catch(err =>{
+        console.log(err.response)
+      })
+    }
   }
 
   return (
