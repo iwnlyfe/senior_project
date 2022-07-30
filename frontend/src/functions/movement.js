@@ -6,7 +6,7 @@ export const outMovement = async() => {
 
 export const addGroupABC = async(_id , group) =>{
     return await axios.patch(process.env.REACT_APP_API + '/addGroupABC', {
-        _id: _id,
+        id: _id,
         group: group,
     })
 }
